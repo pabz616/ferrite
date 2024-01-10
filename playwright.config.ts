@@ -52,6 +52,29 @@ export default defineConfig({
       use: { ...devices['Desktop Safari'] },
     },
 
+    /* Test against browsers set by common name */
+    {
+      name: 'all-browsers-and-tests',
+      use: { 
+        baseURL: 'https://playwright.dev/',
+         ...devices['Desktop Chrome']
+      },
+    },
+    {
+      name: 'all-browsers-and-tests',
+      use: { 
+        baseURL: 'https://playwright.dev/',
+         ...devices['Desktop Safari']
+      },
+    },
+    {
+      name: 'all-browsers-and-tests',
+      use: { 
+        baseURL: 'https://playwright.dev/',
+         ...devices['Desktop Firefox']
+      },
+    },
+
     /* Test against mobile viewports. */
     // {
     //   name: 'Mobile Chrome',
