@@ -18,7 +18,7 @@ test('get started link', async ({ page }) => {
   await expect(page).toHaveURL(/.*intro/)
 });
 
-test.only('check JAVA page', async ({ page }) => {
+test('check JAVA page', async ({ page }) => {
   let getStartedLink = page.getByRole('link', {name: 'Get started'})
   let nodeButton = page.getByRole('button', {name: 'Node.js'})
   let navLink = page.getByRole('navigation', {name: 'Main'}).getByText('Java')
