@@ -1,6 +1,6 @@
 import {test, type Page } from '@playwright/test'
-import { HomePage } from '../pages/pwHomePage';
-import { TopMenuPage } from '../pages/pwTopMenuPage';
+import { HomePage } from './pages/pwHomePage';
+import { TopMenuPage } from './pages/pwTopMenuPage';
 
 const URL = 'https://playwright.dev/'
 const getStartedUrl = /.*intro/;
