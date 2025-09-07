@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import HomePage from '../pages/homePage';
-
+import userData from '../data/userData';
 
 let onHomePage: HomePage;
 
@@ -21,27 +21,54 @@ test.describe('Swag Labs - Login', () => {
   
   test(`Unsuccessful login - invalid username`, async () => {
     await onHomePage.submitLogin('klajsdf', userData.password);
-    await onHomePage.confirmUnsuccessfulLogin();
+    await onHomePage.confirmUnsuccessfulLogin(userData.invalidAcct);
   });
 
-  test(`Unsuccessful login invalid password`, async () => {
+  test(`Unsuccessful login - invalid password`, async () => {
     await onHomePage.submitLogin(userData.username, 'sajlsdf');
-    await onHomePage.confirmUnsuccessfulLogin();
+    await onHomePage.confirmUnsuccessfulLogin(userData.invalidAcct);
   });
+
+  test(`Unsuccessful login - Locked out user`, async () => {
+    await onHomePage.submitLogin('locked_out_user', userData.password);
+    await onHomePage.confirmUnsuccessfulLogin(userData.lockedOutAcct);
+  });
+
+  test(`Unsuccessful login - Problematic user`, async ({ page }) => {
+    await onHomePage.submitLogin('problem_user', userData.password);
+    await expect(page).toHaveURL('https://www.saucedemo.com/inventory.html');
+  });
+
+  test(`Unsuccessful login - Glitched user`, async ({ page }) => {
+    await onHomePage.submitLogin('performance_glitch_user', userData.password);
+    await expect(page).toHaveURL('https://www.saucedemo.com/inventory.html');
+  });
+
+  test(`Unsuccessful login - Error user`, async ({ page }) => {
+    await onHomePage.submitLogin('error_user', userData.password);
+    await expect(page).toHaveURL('https://www.saucedemo.com/inventory.html');
+  });
+
+
+  test(`Unsuccessful login - Visual user`, async ({ page }) => {
+    await onHomePage.submitLogin('visual_user', userData.password);
+    await expect(page).toHaveURL('https://www.saucedemo.com/inventory.html');
+  });
+
 
   test(`Unsuccessful login - exposed admin login`, async () => {
     await onHomePage.submitLogin('admin', 'password');
-    await onHomePage.confirmUnsuccessfulLogin();
+    await onHomePage.confirmUnsuccessfulLogin(userData.invalidAcct);
   });
   
   test(`Unsuccessful login - XSS check at username input`, async () => {
     await onHomePage.submitLogin(userData.script, userData.password);
-    await onHomePage.confirmUnsuccessfulLogin();
+    await onHomePage.confirmUnsuccessfulLogin(userData.invalidAcct);
   });
 
   test(`Unsuccessful login - XSS check at password input`, async () => {
     await onHomePage.submitLogin(userData.username, userData.script);
-    await onHomePage.confirmUnsuccessfulLogin();
+    await onHomePage.confirmUnsuccessfulLogin(userData.invalidAcct);
   });
 });
 
