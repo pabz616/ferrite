@@ -1,21 +1,15 @@
 {
-  "name": "ferrite",
+  "name": "saucedemo",
   "version": "1.0.0",
-  "description": "Playwright w. Typescript",
+  "description": "",
   "main": "index.js",
-  "scripts": {
-    "test:e2e": "npx playwright test tests/",
-    "test:e2e:all": "npx playwright test tests --project=all-browsers-and-tests",
-    "test:e2e:ci": "CI=1 npx playwright test --project=ci --shard=$CI_NODE_INDEX/$CI_NODE_TOTAL",
-    "test:e2e:dev": "npx playwright test tests-examples/ --project=chromium --headed --retries=0 --reporter=line",
-    "test:e2e:smoke": "npx playwright test tests-examples/ --grep @smoke --project=chromium",
-    "test:e2e:non-smoke": "npx playwright test tests-examples/ --grep-invert @smoke --project=firefox"
-  },
+  "scripts": {},
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "type": "commonjs",
   "devDependencies": {
-    "@playwright/test": "^1.40.1",
-    "@types/node": "^20.10.8"
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^24.3.1"
   }
 }
