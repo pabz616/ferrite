@@ -1,5 +1,5 @@
 import { test as base } from '@playwright/test';
-import BookStorePage from '../../demoQA/pages/bookStorePage';
+import BookStorePage from '../pages/bookStorePage';
 import hooks from '../utils/hooks';
 import pages from '../utils/pages';
 

@@ -1,4 +1,4 @@
-import uiPages from '../utils/uiPages';
+import uiPages from './uiPages';
 
 export function buildUrl(page: string, params?: Record<any, any>) {
   const uiPath = uiPages[page];

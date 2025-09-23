@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import HomePage from '../pages/homePage';
+import HomePage from '../pages/homePage.ts';
 import userData from '../data/userData';
 
 let onHomePage: HomePage;
