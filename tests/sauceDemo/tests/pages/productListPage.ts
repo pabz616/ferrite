@@ -42,7 +42,12 @@ async checkProductCopy(){
    let actualCopy = this.getProductDescription(1).innerText();
    await expect(actualCopy).toEqual(expectedCopy);
 }
+async confirmAddToCartButtonIsClickable(){
+        for (let i = 1; i < 7; i++) {
+        await expect(this.getAddToCartButton(i)).toBeEnabled;
+    }
 
+}
 async checkProductPrice(){
     let expectedPrice = "$49.99"
     let actualPrice = this.getProductPrice(4).innerText();
@@ -50,6 +55,11 @@ async checkProductPrice(){
     await expect(actualPrice).toEqual(expectedPrice);
 
 }
+async clickAddToCart(){
+    this.getAddToCartButton(1).click()
 }
+}
+
+
 
 export default ProductListPage;

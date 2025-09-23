@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test} from '@playwright/test';
 import HomePage from '../pages/homePage';
 import ProductListPage from '../pages/productListPage';
 import userData from '../data/userData';
@@ -13,20 +13,23 @@ test.beforeEach(async ({ page }) => {
 test.describe('Swag Labs - Product List Page UI Check', () => {
     test('Product List Page is to spec', async ({ page }) => {
         await onHomePage.submitLogin(userData.username, userData.password);
-        onProductList.checkUI;
+        await onProductList.checkUI;
+  })
+    test('Product List Page Add To Cart Button Is Actionable', async ({ page }) => {
+        await onHomePage.submitLogin(userData.username, userData.password);
+        await onProductList.confirmAddToCartButtonIsClickable;
   })
     test('Product Name for "Sauce Labs T-Shirt" is unchanged', async ({ page }) => {
         await onHomePage.submitLogin(userData.username, userData.password);
-        onProductList.checkProductName;
+        await onProductList.checkProductName;
   })
     test('Product Description for "Sauce Labs Backpack" is free of typos', async ({ page }) => {
         await onHomePage.submitLogin(userData.username, userData.password);
-        onProductList.checkProductCopy;
+        await onProductList.checkProductCopy;
   })
-
     test('Product Price for "Sauce Lab Fleece Jacket" is unchanged', async ({ page }) => {
         await onHomePage.submitLogin(userData.username, userData.password);
-        onProductList.checkProductPrice;
+        await onProductList.checkProductPrice;
   })
 
 });
