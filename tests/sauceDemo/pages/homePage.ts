@@ -30,7 +30,7 @@ async submitLogin(email: string, password: string) {
 
   async confirmSuccessfullyLoggedIn() {
     await expect(this.page).toHaveURL(/.*profile/);
-    await expect(this.page).toHaveTitle(/DEMOQA/);
+    await expect(this.page).toHaveTitle(/Swag Labs/);
   }
 
   async confirmUnsuccessfulLogin(message) {

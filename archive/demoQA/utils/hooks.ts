@@ -1,8 +1,8 @@
 import { Page } from '@playwright/test';
-import { buildUrl } from '../utils/urlBuilder';
-import BookStorePage from '../../demoQA/pages/bookStorePage';
-import LoginPage from '../../demoQA/pages/loginPage';
-import ProfilePage from '../../demoQA/pages/profilePage';
+import { buildUrl } from './urlBuilder';
+import BookStorePage from '../pages/bookStorePage';
+import LoginPage from '../pages/loginPage';
+import ProfilePage from '../pages/profilePage';
 
 async function beforeEach(
   page: Page,

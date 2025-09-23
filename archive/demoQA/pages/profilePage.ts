@@ -1,6 +1,6 @@
 import { type Page, type Locator , expect, type BrowserContext } from '@playwright/test';
-import bookListData from '../../demoQA/data/bookListData';
-import apiPaths from '../../demoQA/utils/apiPaths';
+import bookListData from '../data/bookListData';
+import apiPaths from '../utils/apiPaths';
 
 class SearchPage {
   readonly page: Page;
