@@ -12,7 +12,7 @@ let onGlobalHeader: GlobalHeader;
 let onCartPage: CartPage;
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('https://www.saucedemo.com/');
+  await page.goto('/');
   onHomePage = new HomePage(page);
   onProductListPage = new ProductListPage(page);
   onGlobalHeader = new GlobalHeader(page);
