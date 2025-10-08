@@ -33,7 +33,7 @@ async submitLogin(email: string, password: string) {
     await expect(this.page).toHaveTitle(/Swag Labs/);
   }
 
-  async confirmUnsuccessfulLogin(message) {
+  async confirmUnsuccessfulLogin(message: string) {
     await expect (this.errorMsg).toBeVisible();
     await expect(this.errorMsgText).toContainText(message)
   }

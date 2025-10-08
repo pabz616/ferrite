@@ -2,6 +2,7 @@ import { type Page, type Locator , expect } from '@playwright/test';
 
 class ProductListPage {
     readonly page: Page;
+    readonly addToCartButton: Locator;
     
     getProductImage(id: number) {
         return this.page.locator(`//a[@data-test="item-${id}-img-link"]`);
@@ -21,6 +22,7 @@ class ProductListPage {
 
     constructor(page: Page) {
         this.page = page;
+        this.addToCartButton = page.locator('//button[@id="add-to-cart-sauce-labs-backpack"]')
     }
 async checkUI(){
     for (let i = 1; i < 7; i++) {
@@ -56,7 +58,7 @@ async checkProductPrice(){
 
 }
 async clickAddToCart(){
-    this.getAddToCartButton(1).click()
+    await this.addToCartButton.click()
 }
 }
 

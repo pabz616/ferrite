@@ -58,17 +58,11 @@ async confirmButtonsAreActionable(){
     await expect(this.checkoutButton).toBeEnabled; 
   }
 
-async clickContinueShopping(){
-    this.continueShoppingButton.click()
-}
+async clickContinueShopping(){await this.continueShoppingButton.click()}
 
-async clickCheckout(){
-    this.checkoutButton.click()
-}
+async clickCheckout(){await this.checkoutButton.click()}
 
-async clickRemoveItem(){
-    this.removeButton.click()
-}
+async clickRemoveItem(){await this.removeButton.click()}
 
 }
 
