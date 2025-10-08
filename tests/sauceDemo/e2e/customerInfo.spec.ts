@@ -5,7 +5,6 @@ import GlobalHeader from '../pages/globalHeader.ts';
 import CartPage from '../pages/cartPage.ts';
 import CustomerInfoPage from '../pages/checkoutCustomerInfoPage.ts';
 
-
 import userData from '../data/userData';
 
 let onHomePage: HomePage;
@@ -50,7 +49,7 @@ test.describe('Swag Labs - Checkout Workflow - Customer Information (KYC)', () =
         await onCustomerInfoPage.confirmValidationErrorsAreCleared;
   })
 
-      test('Customer Information Page - Validation Occurs For Invalid Zipcode', async () => {
+    test('Customer Information Page - Validation Occurs For Invalid Zipcode', async () => {
         await onHomePage.submitLogin(userData.username, userData.password);
         await onProductListPage.clickAddToCart;
         await onGlobalHeader.clickCartIcon;
