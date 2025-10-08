@@ -61,7 +61,7 @@ test.describe('Swag Labs - Checkout Workflow - Customer Information (KYC)', () =
 
   //TODO - Additional tests for different values. At the moment the form will accept any value at all inputs (bug!)
 
-    test.only('Customer Information Page - Data Persists In The Inputs', async ({page}) => {
+    test('Customer Information Page - Data Persists In The Inputs', async ({page}) => {
         await onHomePage.submitLogin(userData.username, userData.password);
         await onProductListPage.clickAddToCart;
         await onGlobalHeader.clickCartIcon;
