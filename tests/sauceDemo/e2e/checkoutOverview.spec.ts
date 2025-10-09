@@ -1,4 +1,4 @@
-import { test} from '@playwright/test';
+import { test, expect} from '@playwright/test';
 import HomePage from '../pages/homePage.ts';
 import ProductListPage from '../pages/productListPage.ts';
 import GlobalHeader from '../pages/globalHeader.ts';
@@ -7,6 +7,7 @@ import CustomerInfoPage from '../pages/checkoutCustomerInfoPage.ts';
 import OverviewPage from '../pages/checkoutOverviewPage.ts';
 
 import userData from '../data/userData.ts';
+
 
 let onHomePage: HomePage;
 let onProductListPage: ProductListPage;
@@ -35,5 +36,18 @@ test.describe('Swag Labs - Checkout Workflow - Purchase Order Summary', () => {
     await onCustomerInfoPage.clickContinueButton;
     await onCheckoutOverviewPage.confirmPurchaseDetails;
     await onCheckoutOverviewPage.submitPurchase;
+  });
+
+    test('Checkout Overview - Cancel Purchase', async ({page}) => {
+    await onHomePage.submitLogin(userData.username, userData.password);
+    await onProductListPage.clickAddToCart;
+    await onGlobalHeader.clickCartIcon;
+    await onCartPage.clickCheckout;
+    await onCustomerInfoPage.fillForm(userData.userFirstName, userData.userLastName, userData.userZipCode);
+    await onCustomerInfoPage.clickContinueButton;
+    await onCheckoutOverviewPage.cancelPurchase;
+
+    // CLICKING CANCEL BRINGS THE USER BACK TO THE HOME PAGE, CART ITEMS REMAIN
+    await expect(page).toHaveURL('https://www.saucedemo.com/inventory.html');
   });
 });
