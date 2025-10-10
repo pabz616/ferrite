@@ -50,4 +50,6 @@ test.describe('Swag Labs - Checkout Workflow - Purchase Order Summary', () => {
     // CLICKING CANCEL BRINGS THE USER BACK TO THE HOME PAGE, CART ITEMS REMAIN
     await expect(page).toHaveURL('https://www.saucedemo.com/inventory.html');
   });
+
+  //TODO Add test to attempt editing quantity page on overview page
 });
