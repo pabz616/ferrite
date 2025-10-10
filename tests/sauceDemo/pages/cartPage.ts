@@ -14,41 +14,43 @@ class CartPage {
     readonly checkoutButton: Locator;
 
     constructor(page: Page) {
-        this.page = page;
-        this.pageTitle = page.locator('//span[@data-test="title"]');
-        this.quantityLabel = page.locator('//div[@data-test="cart-quantity-label"]');
-        this.descriptionLabel = page.locator('//div[@data-test="cart-desc-label"]');
-        this.productQuantity = page.locator('//div[@data-test="item-quantity"]');
-        this.productName = page.locator('//div[@data-test="inventory-item-name"]');
-        this.productDescription = page.locator('//div[@data-test="inventory-item-desc"]');
-        this.productPrice = page.locator('//div[@data-test="inventory-item-price"]');
-        this.removeButton = page.locator('//button[contains(.,"Remove")]');
-        this.continueShoppingButton = page.locator('//button[contains(.,"Continue Shopping")]');
-        this.checkoutButton = page.locator('//button[contains(.,"Checkout")]');
+      this.page = page;
+      this.pageTitle = page.locator('//span[@data-test="title"]');
+      this.quantityLabel = page.locator('//div[@data-test="cart-quantity-label"]');
+      this.descriptionLabel = page.locator('//div[@data-test="cart-desc-label"]');
+      this.productQuantity = page.locator('//div[@data-test="item-quantity"]');
+      this.productName = page.locator('//div[@data-test="inventory-item-name"]');
+      this.productDescription = page.locator('//div[@data-test="inventory-item-desc"]');
+      this.productPrice = page.locator('//div[@data-test="inventory-item-price"]');
+      this.removeButton = page.locator('//button[contains(.,"Remove")]');
+      this.continueShoppingButton = page.locator('//button[contains(.,"Continue Shopping")]');
+      this.checkoutButton = page.locator('//button[contains(.,"Checkout")]');
     }
 
 
 async checkUI(){
-    await expect(this.pageTitle).toBeVisible;
-    await expect(this.quantityLabel).toBeVisible;
-    await expect(this.descriptionLabel).toBeVisible;
-    await expect(this.productQuantity).toBeVisible;
-    await expect(this.productName).toBeVisible;
-    await expect(this.productDescription).toBeVisible;
-    await expect(this.productPrice).toBeVisible;
-    await expect(this.removeButton).toBeVisible;
-    await expect(this.continueShoppingButton).toBeVisible;
-    await expect(this.checkoutButton).toBeVisible;
-  }
+
+  await expect(this.pageTitle).toBeVisible;
+  await expect(this.quantityLabel).toBeVisible;
+  await expect(this.descriptionLabel).toBeVisible;
+  await expect(this.productQuantity).toBeVisible;
+  await expect(this.productName).toBeVisible;
+  await expect(this.productDescription).toBeVisible;
+  await expect(this.productPrice).toBeVisible;
+  await expect(this.removeButton).toBeVisible;
+  await expect(this.continueShoppingButton).toBeVisible;
+  await expect(this.checkoutButton).toBeVisible;
+}
 
 async checkCopy(){
-    let cartPageTitle = this.pageTitle.innerText
-    let qtyLabel = this.quantityLabel
-    let descLabel = this.descriptionLabel
-    
-    await expect(cartPageTitle).toBe('Your Cart');
-    await expect(qtyLabel).toBe('QTY');
-    await expect(descLabel).toBe('DESCRIPTION');
+
+  let cartPageTitle = this.pageTitle.innerText
+  let qtyLabel = this.quantityLabel
+  let descLabel = this.descriptionLabel
+  
+  await expect(cartPageTitle).toBe('Your Cart');
+  await expect(qtyLabel).toBe('QTY');
+  await expect(descLabel).toBe('DESCRIPTION');
 }
 
 
