@@ -11,10 +11,6 @@ test.beforeEach(async ({ page }) => {
   onProductList = new ProductListPage(page)
 });
 test.describe('Swag Labs - Product List Page UI Check', () => {
-    test('Product List Page is to spec', async ({ page }) => {
-        await onHomePage.submitLogin(userData.username, userData.password);
-        await onProductList.checkUI;
-  })
     test('Product List Page Add To Cart Button Is Actionable', async ({ page }) => {
         await onHomePage.submitLogin(userData.username, userData.password);
         await onProductList.confirmAddToCartButtonIsClickable;

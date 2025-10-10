@@ -14,7 +14,7 @@ class ProductDetailsPage {
     this.productName = page.locator('//div[@data-test="inventory-item-name"]"]');
     this.productDescription = page.locator('//div[@data-test="inventory-item-desc"]"]');
     this.productPrice = page.locator('//div[@data-test="inventory-item-price"]"]');
-    this.addToCartButton = page.locator('//button[@data-test="add-to-cart"]"]');
+    this.addToCartButton = page.getByRole('button', { name: /Add to cart/ });
    }
 
 async checkUI(){
@@ -24,6 +24,7 @@ async checkUI(){
     await expect (this.productDescription).toBeVisible();
     await expect (this.productPrice).toBeVisible();
     await expect (this.addToCartButton).toBeVisible();
+    await expect (this.addToCartButton).toBeEnabled();
 }
 
 async confirmAddToCartButtonIsClickable(){
@@ -37,9 +38,7 @@ async confirmThePriceIsCorrect(){
     await expect (price).not.toBe('-$29.99')
 }
 
-async clickAddToCart(){
-    this.addToCartButton.click();
-}
+async clickAddToCart(){await this.page.locator('//button[@id="add-to-cart"]').click();}
 
 }
 
