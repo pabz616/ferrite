@@ -1,24 +1,36 @@
 import { type Page, type Locator , expect } from '@playwright/test';
+import siteCopy from '../data/siteCopy';
 
 class GlobalHeader {
     readonly page: Page;
+    readonly appLogo: Locator;
     readonly cartIcon: Locator;
+    readonly menuButton: Locator;
 
     constructor(page: Page) {
         this.page = page;
-        this.cartIcon = page.locator('//a[@data-test="shopping-cart-link"]');
+        this.appLogo = page.locator('//div[@class="app_logo"]');
+        this.cartIcon = page.getByTestId('shopping-cart-link');
+        this.menuButton = page.locator('//button[@id="react-burger-menu-btn"]')
     }
 
 
 async checkUI(){
+    await expect(this.appLogo).toBeVisible;
+    //
     await expect(this.cartIcon).toBeVisible;
+    await expect(this.cartIcon).toBeEnabled;
+    //
+    await expect(this.appLogo).toHaveText(siteCopy.appName);
+    //
+    await expect(this.menuButton).toBeVisible;
+    await expect(this.menuButton).toBeEnabled;
   }
 
-async clickCartIcon(){
-    this.cartIcon.click();
-}
+async clickCartIcon(){await this.cartIcon.click()};
 
+async clickMenuButton(){await this.menuButton.click()};
 
-}
+};
 
 export default GlobalHeader;
