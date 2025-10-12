@@ -1,4 +1,5 @@
 import { type Page, type Locator , expect } from '@playwright/test';
+import locators from './locators';
 
 class CartPage {
     readonly page: Page;
@@ -24,11 +25,11 @@ class CartPage {
       this.productPrice = page.locator('//div[@data-test="inventory-item-price"]');
       this.removeButton = page.locator('//button[contains(.,"Remove")]');
       this.continueShoppingButton = page.locator('//button[contains(.,"Continue Shopping")]');
-      this.checkoutButton = page.locator('//button[contains(.,"Checkout")]');
+      this.checkoutButton = page.locator(locators.BTN_CHECKOUT);
     }
 
 
-async checkUI(){
+async confirmCartPageIsToSpec(){
 
   await expect(this.pageTitle).toBeVisible;
   await expect(this.quantityLabel).toBeVisible;

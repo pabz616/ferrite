@@ -17,7 +17,7 @@ class CustomerInfoPage {
 
     constructor(page: Page) {
         this.page = page;
-        this.pageTitle = page.getByTestId('title');
+        this.pageTitle = page.locator('//span[@class="title"]');
         this.fname_input = page.locator('//input[@id="first-name"]'); //page.getByTestId('firstName');
         this.lname_input = page.locator('//input[@id="last-name"]');
         this.zipcode_input = page.getByPlaceholder('Zip/Postal Code');;
@@ -50,11 +50,11 @@ async checkUI(){
 
     await expect(this.lname_input).toBeVisible;
     await expect(this.lname_input).toBeEmpty;
-    await expect(this.fname_input).toHaveAttribute('placeholder', 'Last Name');
+    await expect(this.lname_input).toHaveAttribute('placeholder', 'Last Name');
 
     await expect(this.zipcode_input).toBeVisible;
     await expect(this.zipcode_input).toBeEmpty;
-    await expect(this.fname_input).toHaveAttribute('placeholder', 'Zip/Postal Code');
+    await expect(this.zipcode_input).toHaveAttribute('placeholder', 'Zip/Postal Code');
 
     await expect(this.cancel_button).toBeVisible;
     await expect(this.cancel_button).toBeEnabled;

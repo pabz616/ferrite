@@ -1,5 +1,6 @@
 import { type Page, type Locator , expect } from '@playwright/test';
 import siteCopy from '../data/siteCopy';
+import locators from './locators';
 
 class GlobalHeader {
     readonly page: Page;
@@ -10,7 +11,7 @@ class GlobalHeader {
     constructor(page: Page) {
         this.page = page;
         this.appLogo = page.locator('//div[@class="app_logo"]');
-        this.cartIcon = page.getByTestId('shopping-cart-link');
+        this.cartIcon = page.locator(locators.CART);
         this.menuButton = page.locator('//button[@id="react-burger-menu-btn"]')
     }
 

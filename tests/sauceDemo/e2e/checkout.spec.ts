@@ -34,24 +34,35 @@ test.beforeEach( async ({ page }) => {
 });
 
 test.describe('Swag Labs - Checkout Workflow - Complete A Purchase', () => {
-  test('Purchase an item - From PDP', async () => {
+  test('Purchase an item - From Product List', async ({page}) => {
+    ///TODO SELECT A PRODUCT FROM THE HOME PAGE
+  });
+  test('Purchase an item - From PDP', async ({page}) => {
     await onHomePage.confirmLoginPageUI;
     await onHomePage.submitLogin(userData.username, userData.password);
-    await onProductListPage.confirmProductListUI;
     await onProductListPage.selectAProduct(productData.backpackName)
-    await onProductDetailsPage.checkUI;
-    await onProductDetailsPage.clickAddToCart;
-    await onGlobalHeader.clickCartIcon;
-    await onCartPage.clickCheckout;
+    await onProductDetailsPage.clickAddToCart();
+    await onGlobalHeader.clickCartIcon();
+    await onCartPage.clickCheckout();
     await onCustomerInfoPage.fillForm(userData.userFirstName, userData.userLastName, userData.userZipCode);
-    await onCustomerInfoPage.clickContinueButton;
+    await onCustomerInfoPage.clickContinueButton();
     await onCheckoutOverviewPage.confirmPurchaseDetails;
     await onCheckoutOverviewPage.submitPurchase;
   });
-
-  //TODO Separate UI Checks to a separate Test
-    // test('Product List Page is to spec', async ({ page }) => {
-    //     await onHomePage.submitLogin(userData.username, userData.password);
-    //     await onProductList.conUI;
-    // })
+  test('Purchase an item - Check Page To Page UI', async ({page}) => {
+    await onHomePage.confirmLoginPageUI;
+    await onHomePage.submitLogin(userData.username, userData.password);
+    await onProductListPage.confirmProductListUI;
+    await onProductListPage.selectAProduct(productData.bikeLightName);
+    await onProductDetailsPage.confirmProductDetailsAreToSpec();
+    await onProductDetailsPage.clickAddToCart();
+    await onGlobalHeader.clickCartIcon();
+    await onCartPage.confirmCartPageIsToSpec();
+    await onCartPage.clickCheckout();
+    await onCustomerInfoPage.checkUI();
+    await onCustomerInfoPage.fillForm(userData.userFirstName, userData.userLastName, userData.userZipCode);
+    await onCustomerInfoPage.clickContinueButton();
+    await onCheckoutOverviewPage.confirmPurchaseDetails;
+    await onCheckoutOverviewPage.submitPurchase;
+  });
 });

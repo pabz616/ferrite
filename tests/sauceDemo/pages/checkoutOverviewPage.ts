@@ -40,8 +40,8 @@ class OverviewPage {
         this.productTotalValue = page.getByTestId('subtotal-label');
         this.salesTax = page.getByTestId('tax-label');
         this.orderTotal = page.getByTestId('total-label');
-        this.cancel_button = page.getByTestId('cancel');
-        this.submit_button = page.getByTestId('finish'); 
+        this.cancel_button = page.getByRole('button', { name: 'cancel' });
+        this.submit_button = page.getByRole('button', { name: 'finish' });
     }
 
 
