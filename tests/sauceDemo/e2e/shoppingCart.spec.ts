@@ -20,12 +20,12 @@ test.beforeEach(async ({ page }) => {
 });
 
 test.describe('Swag Labs - Products Added To Cart UI Check', () => {
-    test('Cart Page is to spec', async ({ page }) => {
-        await onHomePage.submitLogin(userData.username, userData.password);
-        await onProductListPage.clickAddToCart;
-        await onGlobalHeader.clickCartIcon;
-        await onCartPage.checkUI;
-        await onCartPage.checkCopy;
-        await onCartPage.confirmButtonsAreActionable;
+  test('Cart Page is to spec', async ({ page }) => {
+    await onHomePage.submitLogin(userData.username, userData.password);
+    await onProductListPage.clickAddToCart;
+    await onGlobalHeader.clickCartIcon;
+    await onCartPage.confirmCartPageIsToSpec;
+    await onCartPage.checkCopy;
+    await onCartPage.confirmButtonsAreActionable;
   })
 })

@@ -1,4 +1,6 @@
 import { type Page, type Locator , expect } from '@playwright/test';
+import locators from './locators';
+import productData from '../data/productData';
 
 class ProductListPage {
     readonly page: Page;
@@ -22,9 +24,9 @@ class ProductListPage {
 
     constructor(page: Page) {
         this.page = page;
-        this.addToCartButton = page.locator('//button[@id="add-to-cart-sauce-labs-backpack"]')
+        this.addToCartButton = page.locator(locators.BTN_PLP_ADD_TO_CART)
     }
-async checkUI(){
+async confirmProductListUI(){
     for (let i = 1; i < 7; i++) {
         await expect(this.getProductImage(i)).toBeVisible;
         await expect(this.getProductName(i)).toBeVisible;
@@ -39,28 +41,28 @@ async checkProductName(){
     await expect(actualProductName).toEqual(expectedProductName);
 
 }
+
+async selectAProduct(productName: string){
+    await this.page.getByText(productName).click();
+}
 async checkProductCopy(){
-   let expectedCopy = "Carry all the things with this sleek, streamlined sly pack that melds uncompromising style with unequaled laptop and tablet protection."
    let actualCopy = this.getProductDescription(1).innerText();
-   await expect(actualCopy).toEqual(expectedCopy);
+   await expect(actualCopy).toEqual(productData.backpackDesc);
 }
 async confirmAddToCartButtonIsClickable(){
-        for (let i = 1; i < 7; i++) {
-        await expect(this.getAddToCartButton(i)).toBeEnabled;
+    for (let i = 1; i < 7; i++) {
+    await expect(this.getAddToCartButton(i)).toBeEnabled;
     }
-
 }
 async checkProductPrice(){
-    let expectedPrice = "$49.99"
     let actualPrice = this.getProductPrice(4).innerText();
-    console.log(actualPrice)
-    await expect(actualPrice).toEqual(expectedPrice);
+
+    await expect(actualPrice).toEqual(productData.jacketPrice);
 
 }
-async clickAddToCart(){
-    await this.addToCartButton.click()
+async clickAddToCart(){await this.addToCartButton.click()}
 }
-}
+
 
 
 

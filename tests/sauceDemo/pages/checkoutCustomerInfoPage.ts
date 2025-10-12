@@ -17,9 +17,9 @@ class CustomerInfoPage {
 
     constructor(page: Page) {
         this.page = page;
-        this.pageTitle = page.getByTestId('title');
-        this.fname_input = page.getByPlaceholder('First Name'); //page.getByTestId('firstName');
-        this.lname_input = page.getByPlaceholder('Last Name');;
+        this.pageTitle = page.locator('//span[@class="title"]');
+        this.fname_input = page.locator('//input[@id="first-name"]'); //page.getByTestId('firstName');
+        this.lname_input = page.locator('//input[@id="last-name"]');
         this.zipcode_input = page.getByPlaceholder('Zip/Postal Code');;
         this.cancel_button = page.getByRole('button', { name: 'cancel' });
         this.continue_button = page.getByRole('button', { name: 'continue' });
@@ -29,8 +29,14 @@ class CustomerInfoPage {
         this.requiredZipPostalCode = page.locator('(//input[@class="input_error form_input error"])[3]')
         this.errorMessage = page.locator('//div[@class="error-message-container error"]/h3')
         this.closeErrorMessage = page.getByTestId('error-button')
-
     }
+
+    /**
+     * Fills the form fields with the provided user details.
+     * @param fname The first name string.
+     * @param lname The last name string.
+     * @param zip The zip code string.
+     */
 
 
 async checkUI(){
@@ -44,11 +50,11 @@ async checkUI(){
 
     await expect(this.lname_input).toBeVisible;
     await expect(this.lname_input).toBeEmpty;
-    await expect(this.fname_input).toHaveAttribute('placeholder', 'Last Name');
+    await expect(this.lname_input).toHaveAttribute('placeholder', 'Last Name');
 
     await expect(this.zipcode_input).toBeVisible;
     await expect(this.zipcode_input).toBeEmpty;
-    await expect(this.fname_input).toHaveAttribute('placeholder', 'Zip/Postal Code');
+    await expect(this.zipcode_input).toHaveAttribute('placeholder', 'Zip/Postal Code');
 
     await expect(this.cancel_button).toBeVisible;
     await expect(this.cancel_button).toBeEnabled;
@@ -88,6 +94,7 @@ async fillForm(fname: string, lname: string, zip: string){
 }
 
 async confirmFormDataPersists(first: string, last: string, zip: string){
+
     await expect(this.requiredFirstName).toHaveValue(first);
     await expect(this.requiredLastName).toHaveValue(last);
     await expect(this.requiredZipPostalCode).toHaveValue(zip);

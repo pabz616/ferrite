@@ -1,4 +1,5 @@
 export default {
+    appUrl: 'https://www.saucedemo.com/',
     username:'standard_user',
     password:'secret_sauce',
     script:'<script>alert(document.cookie)</script>',
