@@ -4,12 +4,23 @@ import apiData from '../data/apiData'
 const { faker } = require('@faker-js/faker')
 const {DateTime } = require ('luxon')
 
-let token;
 test.describe('RESTFUL BOOKER API', () =>{
-    test ('POST - Generate Token - Alt', async({request}) => {
-     //TODO - Parameterize the value from the token to use in other tests
-    });
-
+    test('Create Token', async ({request}) =>{
+          const response = await request.post(apiData.apiURL+'/auth', {
+            data: {
+                "username": process.env.USERNAME,
+                "password": process.env.PASSWORD
+            }
+        })
+        expect(response.ok()).toBeTruthy()
+        expect(response.status()).toBe(200)
+    
+        const responseBody = await response.json()
+     });
+    test.afterAll('Delete The Updated User', async({request}) =>{
+     const resp = await request.delete(apiData.apiURL+'/booking/2')
+     expect(resp.status()).toBe(200);
+     });
     test('GET - Get All Bookings', async ({ request}) => {
      const resp = await request.get(apiData.apiURL+'/booking')
      const booking = await resp.json();
@@ -19,8 +30,7 @@ test.describe('RESTFUL BOOKER API', () =>{
           
      //CONFIRM RESPONSE OUTPUT
      expect(booking).toBeDefined();
-   });
-
+     });
    test('GET - Get Specific Booking', async ({ request}) => {
      const bookingId = faker.string.numeric(1)
      const resp = await request.get(apiData.apiURL+'/booking/'+bookingId)
@@ -37,8 +47,7 @@ test.describe('RESTFUL BOOKER API', () =>{
      expect(booking["lastname"]).not.toBeNull()
      expect(booking["totalprice"]).not.toBeNaN()
      expect(booking["bookingdates"]).not.toBeNull()
-  });
-
+     });
    test('GET - Filter Bookings By Name', async ({request}) => {
      const resp = await request.get(apiData.apiURL+'/booking?firstname=Jim&lastname=Jones')
      const booking = await resp.json();
@@ -52,8 +61,7 @@ test.describe('RESTFUL BOOKER API', () =>{
      expect(booking["lastname"]).not.toBeNull()
      expect(booking["totalprice"]).not.toBeNaN()
      expect(booking["bookingdates"]).not.toBeNull()
-   });
-
+     });
    test('GET - Filter By Reservation Date', async ({request}) => {
      const resp = await request.get(apiData.apiURL+'/booking?checkin=2018-01-01&checkout=2019-01-01')
      const bookings = await resp.json();
@@ -63,8 +71,7 @@ test.describe('RESTFUL BOOKER API', () =>{
      expect(resp.status()).toBe(200);
      expect(bookings).toBeDefined();
 
-   });
-
+     });
    test('POST - Create A Booking', async({request}) => {
      const randomFirstName = faker.person.firstName()
      const randomLastName = faker.person.lastName()
@@ -94,51 +101,47 @@ test.describe('RESTFUL BOOKER API', () =>{
         expect(respBody.booking).toHaveProperty("firstname",randomFirstName);
         expect(respBody.booking).toHaveProperty("lastname", randomLastName);
         expect(respBody.booking['price']).not.toBeNaN;
-   });
-
+     });
    test('PUT - Update A Booking', async({request}) => {
-     //CREATE AUTH TOKEN
-        const response = await request.post(apiData.apiURL+'/auth', {
-            data: {
-                "username": process.env.USERNAME,
-                "password": process.env.PASSWORD
-            }
-        })
-        expect(response.ok()).toBeTruthy()
-        expect(response.status()).toBe(200)
+     const updateRequest = await request.put(apiData.apiURL+'/booking/3696', {
+          data: {
+               "firstname": "Wade",
+               "lastname": "Wilson",
+               "totalprice": 247,
+               "depositpaid": true,
+               "bookingdates": {
+               "checkin": "2023-06-01",
+               "checkout": "2023-06-15"
+               },
+               "additionalneeds": "Chimichangas"
+               },
+          });
     
-        const responseBody = await response.json()
-        token = responseBody.token
-        console.log(response)
-    
-     //    //UPDATE RECORD
-     //    const updateRequest = await request.put(apiData.apiURL+'/booking/2', {
-     //      headers: {
-     //      'Content-Type': 'application/json',
-     //      'Accept': 'application/json',
-     //      'Cookie': `token=${token}`,
-     //           },
-     //      data: {
-     //           "firstname": "Wade",
-     //           "lastname": "Wilson",
-     //           "totalprice": 247,
-     //           "depositpaid": true,
-     //           "bookingdates": {
-     //           "checkin": "2023-06-01",
-     //           "checkout": "2023-06-15"
-     //           },
-     //           "additionalneeds": "Chimichangas"
-     //           },
-     //      });
-    
-     //    expect(updateRequest.ok()).toBeTruthy();
-     //    expect(updateRequest.status()).toBe(200);
+        expect(updateRequest.ok()).toBeTruthy();
+        expect(updateRequest.status()).toBe(200);
         
-     //    const updatedResponseBody = await updateRequest.json()
-     //    expect(updatedResponseBody).toHaveProperty("firstname", "Wade");
-     //    expect(updatedResponseBody).toHaveProperty("lastname", "Wilson");
-     //    expect(updatedResponseBody).toHaveProperty("totalprice", 247);
-     //    expect(updatedResponseBody).toHaveProperty("depositpaid", true);
+        const updatedResponseBody = await updateRequest.json()
+        expect(updatedResponseBody).toHaveProperty("firstname", "Father");
+        expect(updatedResponseBody).toHaveProperty("lastname", "Christmas");
+        expect(updatedResponseBody).toHaveProperty("totalprice", 247);
+        expect(updatedResponseBody).toHaveProperty("depositpaid", true);
 
-   });
+     });
+   test('PATCH - Partial Update To A Booking', async({request}) => {
+       const updateRequest = await request.put(apiData.apiURL+'/booking/2', {
+          data: {
+               "firstname": "George",
+               "lastname": "Washington"
+               }
+          });
+        expect(updateRequest.ok()).toBeTruthy();
+        expect(updateRequest.status()).toBe(200);
+
+        //CONFIRM UPDATE
+       const resp = await request.get(apiData.apiURL+'/booking/2')
+       const booking = await resp.json();
+
+       expect(booking).toHaveProperty("firstname", "George");
+       expect(booking).toHaveProperty("lastname", "Washington");
+     });
 });
