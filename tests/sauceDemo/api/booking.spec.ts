@@ -146,8 +146,8 @@ test.describe.serial('RESTFUL BOOKER API - E2E Lifecycle', () => {
   test('DELETE - Negative: Fail to delete without Token', async ({ request }) => {
     const response = await request.delete(`${BASE_URL}/booking/${bookingId}`); 
     
-    // Restful Booker returns 403 Forbidden when auth is missing - Currently it is returning 405
-    expect(response.status()).toEqual(405);
+    // Restful Booker returns 403 Forbidden when auth is missing
+    expect(response.status()).toEqual(403);
   });
 
   test('GET - Negative: Handle Non-Existent ID', async ({ request }) => {
@@ -178,7 +178,7 @@ test.describe.serial('RESTFUL BOOKER API - E2E Lifecycle', () => {
       const response = await request.delete(`${BASE_URL}/booking/${bookingId}`, {
         headers: sharedHeaders
       });
-      // It might have failed in a previous test, so we accept 201 (Created/Deleted) or 200, or 404 if already gone
+      // We accept 201 (Created/Deleted) or 200, or 404 if already gone
       expect([200, 201, 404]).toContain(response.status());
       console.log(`Cleaned up booking ID: ${bookingId}`);
     }
