@@ -184,3 +184,5 @@ test.describe.serial('RESTFUL BOOKER API - E2E Lifecycle', () => {
     }
   });
 });
+
+//TODO SECURITY TESTS (?) PARKED UNDER NEGATIVE TESTS
