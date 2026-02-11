@@ -61,9 +61,115 @@ class RegistrationForm {
         this.submit_button = page.getByRole('button', { name: 'Submit' });
     }
 
-async confirmRegistrationFormUI() {}
+async confirmRegistrationFormUI() {
+    //Confirming the presence and attributes of form elements
+    await expect(this.firstName_input).toBeVisible();
+    await expect(this.firstName_input).toHaveAttribute('type', 'text');
+    await expect(this.firstName_input).toHaveAttribute('name', 'firstName');
+    await expect(this.firstName_input).toBeEditable();
+
+    await expect(this.lastName_input).toBeVisible();
+    await expect(this.lastName_input).toHaveAttribute('type', 'text');
+    await expect(this.lastName_input).toHaveAttribute('name', 'lastName');
+    await expect(this.lastName_input).toBeEditable();
+
+    //Marital Status Radio Buttons
+    await expect(this.maritalStatus_Married).toBeVisible();
+    await expect(this.maritalStatus_Married).toHaveAttribute('type', 'radio');
+    await expect(this.maritalStatus_Married).toHaveAttribute('name', 'maritalStatus');
+    await expect(this.maritalStatus_Married).not.toBeChecked();
+
+    await expect(this.maritalStatus_Single).toBeVisible();
+    await expect(this.maritalStatus_Single).toHaveAttribute('type', 'radio');
+    await expect(this.maritalStatus_Single).toHaveAttribute('name', 'maritalStatus');
+    await expect(this.maritalStatus_Single).not.toBeChecked();
+
+    await expect(this.maritalStatus_Divorced).toBeVisible();
+    await expect(this.maritalStatus_Divorced).toHaveAttribute('type', 'radio');
+    await expect(this.maritalStatus_Divorced).toHaveAttribute('name', 'maritalStatus');
+    await expect(this.maritalStatus_Divorced).not.toBeChecked();
+
+    //Hobby Checkboxes
+    await expect(this.hobby_Dance).toBeVisible();
+    await expect(this.hobby_Dance).toHaveAttribute('type', 'checkbox');
+    await expect(this.hobby_Dance).toHaveAttribute('name', 'hobby');
+    await expect(this.hobby_Dance).not.toBeChecked();
+
+    await expect(this.hobby_Reading).toBeVisible();
+    await expect(this.hobby_Reading).toHaveAttribute('type', 'checkbox');
+    await expect(this.hobby_Reading).toHaveAttribute('name', 'hobby');
+    await expect(this.hobby_Reading).not.toBeChecked();
+
+    await expect(this.hobby_Cricket).toBeVisible();
+    await expect(this.hobby_Cricket).toHaveAttribute('type', 'checkbox');
+    await expect(this.hobby_Cricket).toHaveAttribute('name', 'hobby');
+    await expect(this.hobby_Cricket).not.toBeChecked();
+
+    //Country Dropdown
+    await expect(this.country_select).toBeVisible();
+    await expect(this.country_select).toHaveAttribute('name', 'country');
+
+    //Date of Birth Dropdowns
+    await expect(this.dateOfBirth_selectMonth).toBeVisible();
+    await expect(this.dateOfBirth_selectMonth).toHaveAttribute('name', 'dobMonth');
+
+    await expect(this.dateOfBirth_selectDay).toBeVisible();
+    await expect(this.dateOfBirth_selectDay).toHaveAttribute('name', 'dobDay');
+
+    await expect(this.dateOfBirth_selectYear).toBeVisible();
+    await expect(this.dateOfBirth_selectYear).toHaveAttribute('name', 'dobYear');
+
+    //Phone Number Input
+    await expect(this.phoneNumber_input).toBeVisible();
+    await expect(this.phoneNumber_input).toHaveAttribute('type', 'tel');
+    await expect(this.phoneNumber_input).toHaveAttribute('name', 'phoneNumber');
+    await expect(this.phoneNumber_input).toBeEditable();
+
+    //Username Input
+    await expect(this.username_input).toBeVisible();
+    await expect(this.username_input).toHaveAttribute('type', 'text');
+    await expect(this.username_input).toHaveAttribute('name', 'username');
+    await expect(this.username_input).toBeEditable();
+
+    //Email Address Input
+    await expect(this.emailAddress_input).toBeVisible();
+    await expect(this.emailAddress_input).toHaveAttribute('type', 'email');
+    await expect(this.emailAddress_input).toHaveAttribute('name', 'email');
+    await expect(this.emailAddress_input).toBeEditable();
+
+    //Profile Picture File Upload
+    await expect(this.profilePicture_input).toBeVisible();
+    await expect(this.profilePicture_input).toHaveAttribute('type', 'file');
+    await expect(this.profilePicture_input).toHaveAttribute('name', 'profilePicture');
+
+    //About Yourself Textarea
+    await expect(this.aboutYourself_input).toBeVisible();
+    await expect(this.aboutYourself_input).toHaveAttribute('name', 'aboutYourself');
+    await expect(this.aboutYourself_input).toBeEditable();
+
+    //Password Input
+    await expect(this.password_input).toBeVisible();
+    await expect(this.password_input).toHaveAttribute('type', 'password');
+    await expect(this.password_input).toHaveAttribute('name', 'password');
+    await expect(this.password_input).toBeEditable();
+
+    //Confirm Password Input
+    await expect(this.confirmPassword_input).toBeVisible();
+    await expect(this.confirmPassword_input).toHaveAttribute('type', 'password');
+    await expect(this.confirmPassword_input).toHaveAttribute('name', 'confirmPassword');
+    await expect(this.confirmPassword_input).toBeEditable();
+
+    //Submit Button
+    await expect(this.submit_button).toBeVisible();
+    await expect(this.submit_button).toHaveAttribute('type', 'submit');
+    await expect(this.submit_button).toHaveAttribute('name', 'submit');
+    await expect(this.submit_button).toBeEnabled();
+}
+
 async submitRegistrationForm() {}
+
 async confirmSuccessfullyRegistered() {}
+
 }
 
 export default RegistrationForm;
