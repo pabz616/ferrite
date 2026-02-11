@@ -166,7 +166,25 @@ async confirmRegistrationFormUI() {
     await expect(this.submit_button).toBeEnabled();
 }
 
-async submitRegistrationForm() {}
+async submitRegistrationForm() {
+    await this.firstName_input.fill('John');
+    await this.lastName_input.fill('Doe');
+    await this.maritalStatus_Single.check();
+    await this.hobby_Reading.check();
+    await this.country_select.selectOption('United States');
+    await this.dateOfBirth_selectMonth.selectOption('January');
+    await this.dateOfBirth_selectDay.selectOption('1');
+    await this.dateOfBirth_selectYear.selectOption('1990');
+    await this.phoneNumber_input.fill('1234567890');
+    await this.username_input.fill('johndoe');
+    await this.emailAddress_input.fill('johndoe@mail.com');
+    // For file upload, you would typically use setInputFiles with a path to a test file
+    // await this.profilePicture_input.setInputFiles('path/to/test/profile-picture.jpg');
+    await this.aboutYourself_input.fill('Hello, I am John Doe.');
+    await this.password_input.fill('Password123');
+    await this.confirmPassword_input.fill('Password123');
+    await this.submit_button.click();
+}
 
 async confirmSuccessfullyRegistered() {}
 
