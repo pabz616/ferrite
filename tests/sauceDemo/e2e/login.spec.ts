@@ -5,7 +5,7 @@ import userData from '../data/userData';
 let onHomePage: HomePage;
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('https://www.saucedemo.com/');
+  await page.goto(userData.appUrl);
   onHomePage = new HomePage(page);
 });
 
