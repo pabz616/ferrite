@@ -24,11 +24,7 @@ I generated a second prompt, this time being a little more explicit. Although I 
 
 ```Using cheerio, help me generate a script that parses the form input elements from the following URL```
 
-After some massaging of the code and re-runs to get it to work, I had IG optimize the script. The output did exactly what I wanted .. however, because the form repeated the name of the locator a few times, manual verification was necessary. Below is the sample output of the completed script.
-
-<screenshot goes here>
-
-The script can be customized to meet the need of the project, and in the end, parsing the form elements from the page went from a half-day task to seconds.
+After some massaging of the code and re-runs to get it to work, I had IG optimize the script. The output did exactly what I wanted .. however, because the form repeated the name of the locator a few times, manual verification was necessary. The getLocators script can be customized to meet the need of the project, and in the end, parsing the form elements from the page went from a half-day task to seconds. After several test runs, a few bugs were caught.
 
 Step-3. With the page elements established, now we'll build out the page objects using PW best practices for the naming convention. The foundation "slug" is as follows:
 
