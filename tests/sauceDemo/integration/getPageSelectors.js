@@ -2,7 +2,7 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 
 // Function to fetch the HTML content of a page
-url = 'https://way2automation.com/way2auto_jquery/registration.php#load_box'
+url = 'https://www.example.com/'; // Replace with the URL of the page you want to analyze
 
 /**
  * Fetches the content of a web page asynchronously.
