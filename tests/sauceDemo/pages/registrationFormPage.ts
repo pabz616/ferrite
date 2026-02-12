@@ -190,8 +190,6 @@ async submitRegistrationForm() {
     await this.submit_button.click();
 }
 
-async confirmSuccessfullyRegistered() {}
-
 }
 
 export default RegistrationForm;
