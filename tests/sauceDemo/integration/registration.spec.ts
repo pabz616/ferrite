@@ -1,5 +1,5 @@
 import { test, expect} from '@playwright/test';
-import RegistrationForm from '../pages/formPage';
+import RegistrationForm from '../pages/registrationFormPage';
 import registrationData from '../data/registrationData';
 
 let onRegistrationForm: RegistrationForm;
