@@ -13,9 +13,26 @@ test.describe('Demo - Registration Form', () => {
     test('Registration Form - Validate UI Elements', async ({page}) => {
         await onRegistrationForm.confirmRegistrationFormUI();
     });
-    test('Registration Form - Submit with Valid Data', async ({page}) => {});
-    test('Registration Form - Email Validation', async ({page}) => {});
-    test('Registration Form - Phone Number Validation', async ({page}) => {});
-    test('Registration Form - File Upload Validation', async ({page}) => {});
-    test('Registration Form - Password Strength Enforcement', async ({page}) => {});
+    test('Registration Form - Blank Submission', async ({page}) => {
+        await onRegistrationForm.blankSubmission();
+    });
+    test('Registration Form - Successful Submission', async ({page}) => {
+        await onRegistrationForm.submitRegistrationForm();
+        //OMITTED ASSERTION TO CONFIRM SUCCESSFUL FORM SUBMISSION DUE TO LACK OF FEEDBACK MESSAGES OR PAGE REDIRECTION IN THE PROVIDED HTML
+    });
+    test('Registration Form - Invalid Email Validation Occurs', async ({page}) => {
+        await onRegistrationForm.submitRegistration_InvalidEmail();
+    });
+    test('Registration Form - Phone Number Validation', async ({page}) => {
+        await onRegistrationForm.submitRegistration_InvalidPhoneNumber();
+    });
+    test('Registration Form - File Upload Validation', async ({page}) => { 
+        /* HAS BUGS */ 
+    });
+    test('Registration Form - Password Strength Enforcement', async ({page}) => {
+        await onRegistrationForm.submitRegistration_WeakPassword();
+    });
+    test('Registration Form - Mismatched Passwords Validation', async ({page}) => {
+        await onRegistrationForm.submitMismatchedPasswords();
+    });
 });
