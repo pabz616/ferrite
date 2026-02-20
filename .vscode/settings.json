@@ -1,12 +1,13 @@
 {
-    "cSpell.words": [
-        "additionalneeds",
-        "bookingdates",
-        "checkin",
-        "depositpaid",
-        "firstname",
-        "lastname",
-        "totalprice",
-        "tshirt"
-    ]
+  "cSpell.words": [
+    "additionalneeds",
+    "bookingdates",
+    "checkin",
+    "depositpaid",
+    "firstname",
+    "lastname",
+    "totalprice",
+    "tshirt"
+  ],
+  "snyk.advanced.autoSelectOrganization": true
 }
