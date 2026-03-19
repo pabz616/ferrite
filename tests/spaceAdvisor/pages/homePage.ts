@@ -38,6 +38,16 @@ class HomePage {
     readonly planetDetailsTitle: Locator;
     readonly planetDetailsByline: Locator;
     readonly planetDetailsImage: Locator;
+    readonly loginFormTitle: Locator;
+    readonly loginFormUsernameInput: Locator;
+    readonly loginFormPasswordInput: Locator;
+    readonly loginFormSubmitCTA: Locator;
+    readonly loginFormCancelCTA: Locator;
+    readonly loginError1: Locator;
+    readonly loginError2: Locator;
+    readonly socialLinks: Locator;
+    readonly credits: Locator;
+    readonly topLink: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -93,10 +103,18 @@ class HomePage {
         this.planetDetailsImage = page.locator(locators.PLANET_DETAILS_IMAGE);
 
     //LOGIN MODULE
-    //TODO - Add login locators eventually!
+        this.loginFormTitle = page.locator(locators.LOGIN_FORM_TITLE);
+        this.loginFormUsernameInput = page.locator(locators.LOGIN_FORM_USERNAME_INPUT);
+        this.loginFormPasswordInput = page.locator(locators.LOGIN_FORM_PASSWORD_INPUT);
+        this.loginFormSubmitCTA = page.locator(locators.LOGIN_FORM_SUBMIT_CTA);
+        this.loginFormCancelCTA = page.locator(locators.LOGIN_FORM_CANCEL_CTA);
+        this.loginError1 = page.locator(locators.LOGIN_ERROR_1);
+        this.loginError2 = page.locator(locators.LOGIN_ERROR_2);
 
     //FOOTER MODULE
-    //TODO - Add footer locators soon!
+        this.socialLinks = page.locator(locators.SOCIAL_LINKS);
+        this.credits = page.locator(locators.CREDITS);
+        this.topLink = page.locator(locators.TOP_LINK);
 
     }
 }
