@@ -22,3 +22,5 @@ class DestinationSelectionModule {
          this.selectCTA = page.locator(locators.SELECT_CTA);
     }
 }
+
+export default DestinationSelectionModule;

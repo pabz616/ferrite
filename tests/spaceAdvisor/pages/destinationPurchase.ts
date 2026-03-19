@@ -1,7 +1,7 @@
 import { type Page, type Locator , expect } from '@playwright/test';
 import locators from '../pageElements/locators';
 
-class HomePage {
+class CheckoutModule {
     readonly page: Page;
     readonly formTitle: Locator;
     readonly formNameInput: Locator;
@@ -52,3 +52,5 @@ class HomePage {
         this.planetDetailsImage = page.locator(locators.PLANET_DETAILS_IMAGE);
     }
 }
+
+export default CheckoutModule;

@@ -15,3 +15,5 @@ class FooterModule {
 
     }
 }
+
+export default FooterModule;

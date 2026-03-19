@@ -1,7 +1,7 @@
 import { type Page, type Locator , expect } from '@playwright/test';
 import locators from '../pageElements/locators';
 
-class HomePage {
+class DestinationFilters {
     readonly page: Page;
     readonly filterModuleTitle: Locator;
     readonly filterModuleByline: Locator;
@@ -18,3 +18,5 @@ class HomePage {
         this.filterPriceRange = page.locator(locators.FILTER_PRICE_RANGE);
     }
 }
+
+export default DestinationFilters;
