@@ -1,5 +1,6 @@
 import { type Page, type Locator , expect } from '@playwright/test';
 import locators from '../pageElements/locators';
+import testData from '../utils/testData';
 
 class CheckoutModule {
     readonly page: Page;
@@ -51,6 +52,86 @@ class CheckoutModule {
         this.planetDetailsByline = page.locator(locators.PLANET_DETAILS_BYLINE);
         this.planetDetailsImage = page.locator(locators.PLANET_DETAILS_IMAGE);
     }
+
+async confirmCheckoutFormUI(){
+    expect(this.formNameInput).toBeVisible
+    expect(this.formNameInput).toHaveAttribute('placeholder', 'Name');
+    expect(this.formNameInput).toBeEmpty
+    expect(this.formNameInput).toBeEditable
+    //
+    expect(this.formEmailInput).toBeVisible
+    expect(this.formEmailInput).toHaveAttribute('placeholder', 'Email Address');
+    expect(this.formEmailInput).toBeEmpty
+    expect(this.formEmailInput).toBeEditable
+    //
+    expect(this.formSSNInput).toBeVisible
+    expect(this.formSSNInput).toHaveAttribute('placeholder', 'Social Security Number');
+    expect(this.formSSNInput).toBeEmpty
+    expect(this.formSSNInput).toBeEditable
+    //
+    expect(this.formPhoneInput).toBeVisible
+    expect(this.formPhoneInput).toHaveAttribute('placeholder', 'Phone Number');
+    expect(this.formPhoneInput).toBeEmpty
+    expect(this.formPhoneInput).toBeEditable
+    //
+    expect(this.formFileUpload).toBeVisible
+    expect(this.formFileUpload).toBeEnabled
+    expect(this.formFileUpload).toHaveText('Drag and drop your health insurance or click to upload')
+}
+
+async completeCheckoutForm(){
+    this.formNameInput.fill(testData.sa_traveler_name)
+    this.formEmailInput.fill(testData.sa_traveler_email)
+    this.formSSNInput.fill(testData.sa_traveler_ssn)
+    this.formPhoneInput.fill(testData.sa_traveler_tel)
+}
+
+async confirmOrderSummaryUI(){
+    expect(this.orderSummaryTitle).toBeVisible
+    //
+    expect(this.dateElement).toBeVisible
+    expect(this.dateValue).toBeVisible
+    expect(this.dateValue).not.toHaveText('01/01/1970')
+    //
+    expect(this.travelerElement).toBeVisible
+    expect(this.travelerValue).toBeVisible
+    expect(this.travelerValue).not.toHaveText('$0')
+    //
+    expect(this.promoCodeInput).toBeVisible
+    expect(this.promoCodeInput).toBeEmpty
+    expect(this.promoCodeInput).toHaveAttribute('placeholder', 'I have a promo code');
+    expect(this.promoCodeInput).toBeEditable
+    //
+    expect(this.promoCodeCTA).toBeVisible
+    expect(this.promoCodeCTA).toBeDisabled
+    //
+    expect(this.termsCheckbox).not.toBeChecked
+    //
+    expect(this.submitCTA).toBeVisible
+    expect(this.submitCTA).toBeDisabled
+}
+
+async enterPromoCode(){
+    //BEFORE ENTERING A VALUE
+    expect(this.promoCodeInput).toBeEmpty
+    expect(this.promoCodeCTA).toBeDisabled
+
+    this.promoCodeInput.fill(testData.sa_promo)
+    
+    //AFTER ENTERING A VALUE
+    expect(this.promoCodeCTA).toBeEnabled
+    this.promoCodeCTA.click()
+}
+
+async agreeToTerms(){
+    this.termsCheckbox.check
+}
+
+async placeOrder(){
+    expect(this.submitCTA).toBeEnabled
+    this.submitCTA.click()
+}
+
 }
 
 export default CheckoutModule;
