@@ -49,8 +49,16 @@ export default {
     PLANET_DETAILS_IMAGE: '//div[@class="recharts-wrapper"]',
 
     //LOGIN MODULE
-    //TODO - Add login locators eventually!
+    LOGIN_FORM_TITLE: '//h2[@class="Login__headline-1___qo4Tz"]',
+    LOGIN_FORM_USERNAME_INPUT: '(//input[@class="theme__inputElement___27dyY"])[1]',
+    LOGIN_FORM_PASSWORD_INPUT: '(//input[@class="theme__inputElement___27dyY"])[2]',
+    LOGIN_FORM_SUBMIT_CTA: '//button[contains(@class,"LoginButton__primary___38GOe")]',
+    LOGIN_FORM_CANCEL_CTA: '//button[contains(@class,"LoginButton__accent___hdTFW")]',
+    LOGIN_ERROR_1: '(//span[@class="theme__error___3ilni"])[1]',
+    LOGIN_ERROR_2: '(//span[@class="theme__error___3ilni"])[2]',
 
     //FOOTER MODULE
-    //TODO - Add footer locators soon!
+    SOCIAL_LINKS: '//div[@class="Box__box___2XzJ2 Footer__icons-box___3_hF7"]',
+    CREDITS: '//p[@class="Footer__info___2_hgj"]',
+    TOP_LINK: '//span[contains(.,"Back to top")]'
 }
