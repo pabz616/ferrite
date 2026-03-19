@@ -9,5 +9,6 @@
     "totalprice",
     "tshirt"
   ],
-  "snyk.advanced.autoSelectOrganization": true
+  "snyk.advanced.autoSelectOrganization": true,
+  "snyk.advanced.organization": "da41c350-f466-4c5b-9a5b-1b7ef925daad"
 }
