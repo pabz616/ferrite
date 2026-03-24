@@ -77,4 +77,11 @@ test.describe('Space Advisor - Checkout Flow', () => {
         onCheckoutForm.agreeToTerms
         onCheckoutForm.placeOrder
     });
+
+    test('Purchase A Package, Incomplete Checkout', async ({page}) =>{
+        onDestinationCatalog.selectDestination(1)
+        onCheckoutForm.submitIncompleteCheckoutForm
+        onCheckoutForm.confirmRequiredValidationErrorsAreShown
+        onCheckoutForm.confirmCheckoutIsBlocked
+    });
 });
