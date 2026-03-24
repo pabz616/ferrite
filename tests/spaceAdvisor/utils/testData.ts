@@ -9,5 +9,8 @@ export default {
     sa_traveler_email: `tester${faker.number}@galactictravels.com`,
     sa_traveler_ssn: '123-45-6789',
     sa_traveler_tel: '212-333-4455',
-    sa_promo: faker.color+`${faker.number.int}`
+    sa_promo: faker.color+`${faker.number.int}`,
+    EmailErrorCopy: 'Enter a valid e-mail address.',
+    SSNErrorCopy: 'Enter a valid Social Security number (xxx-xx-xxxx).',
+    TELErrorCopy: 'Enter a valid US phone number.'
 }

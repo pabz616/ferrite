@@ -35,6 +35,11 @@ export default {
     FORM_PHONE_INPUT: '(//input[@class="theme__inputElement___27dyY"])[4]',
     FORM_FILE_UPLOAD: '#',
 
+    //CHECKOUT MODULE ERRORS
+    REQD_EMAIL: '(//span[contains(@class,"theme__error___3ilni")])[1]',
+    REQD_SSN: '(//span[contains(@class,"theme__error___3ilni")])[2]',
+    REQD_TEL: '(//span[contains(@class,"theme__error___3ilni")])[3]',
+
     //ORDER SUMMARY MODULE
     ORDER_SUMMARY_TITLE: '//h3[@class="OrderSummary__headline-2___2JUYV"]',
     DATE_ELEMENT: '//h3[@class="flexboxgrid__col-xs-7___3o2m-"]',

@@ -23,6 +23,9 @@ class CheckoutModule {
     readonly planetDetailsTitle: Locator;
     readonly planetDetailsByline: Locator;
     readonly planetDetailsImage: Locator;
+    readonly requiredEmailAddressError: Locator;
+    readonly requiredSSNError: Locator;
+    readonly requiredPhoneError: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -34,6 +37,11 @@ class CheckoutModule {
         this.formSSNInput = page.locator(locators.FORM_SSN_INPUT);
         this.formPhoneInput = page.locator(locators.FORM_PHONE_INPUT);
         this.formFileUpload = page.locator(locators.FORM_FILE_UPLOAD);
+
+    //CHECKOUT MODULE VALIDATION
+        this.requiredEmailAddressError = page.locator(locators.REQD_EMAIL)
+        this.requiredSSNError = page.locator(locators.REQD_SSN)
+        this.requiredPhoneError = page.locator(locators.REQD_TEL)
 
     //ORDER SUMMARY MODULE
         this.orderSummaryTitle = page.locator(locators.ORDER_SUMMARY_TITLE);
@@ -86,6 +94,13 @@ async completeCheckoutForm(){
     this.formPhoneInput.fill(testData.sa_traveler_tel)
  }
 
+async submitIncompleteCheckoutForm(){
+    this.formNameInput.fill(" ")
+    this.formEmailInput.fill(" ")
+    this.formSSNInput.fill(" ")
+    this.formPhoneInput.fill(" ")
+}
+
 async confirmOrderSummaryUI(){
     expect(this.orderSummaryTitle).toBeVisible
     //
@@ -128,6 +143,24 @@ async confirmTotal(){
     const actualTotal: number = parseFloat(strInt);
 
     expect(actualTotal).toBeCloseTo(expectedTotal);
+}
+
+async confirmRequiredValidationErrorsAreShown(){
+    let email_errorMsg = this.requiredEmailAddressError.innerText
+    let ssn_errorMsg = this.requiredSSNError.innerText
+    let phone_errorMsg = this.requiredPhoneError.innerText
+
+    expect(this.requiredEmailAddressError).toBeVisible();
+    expect(this.requiredSSNError).toBeVisible();
+    expect(this.requiredPhoneError).toBeVisible();
+
+    expect(email_errorMsg).toBe(testData.EmailErrorCopy)
+    expect(ssn_errorMsg).toBe(testData.SSNErrorCopy)
+    expect(phone_errorMsg).toBe(testData.TELErrorCopy)
+}
+
+async confirmCheckoutIsBlocked(){
+    expect(this.submitCTA).toBeDisabled
 }
 
 async enterPromoCode(){
