@@ -9,8 +9,11 @@ export default {
     DEPARTURE_PICKER: '(//input[@class="theme__inputElement___27dyY theme__inputElement___1oBGc WhiteDatePicker__inputElement___3d9uL"])[1]',
     RETURN_PICKER: '(//input[@class="theme__inputElement___27dyY theme__inputElement___1oBGc WhiteDatePicker__inputElement___3d9uL"])[2]',
     PASSENGER_ADULT_PICKER: '(//input[contains(@class,"WhiteDropDown__inputInputElement___2wTPU")])[1]',
+    ADULTS_2: '//li[contains(@class,"WhiteDropDown__selected___3y0b0")][1]',
     PASSENGER_CHILD_PICKER: '(//input[contains(@class,"WhiteDropDown__inputInputElement___2wTPU")])[2]',
+    CHILDREN_2: '(//li[contains(@class,"WhiteDropDown__selected___3y0b0")])[2]',
     SELECT_CTA: '(//button[contains(@class,"CTAButton__button___2nXRo")])[1]',
+    PICKER_CTA: '(//button[contains(@class,"theme__button___3HGWm theme__button___14VKJ")])[2]',
 
     //DESTINATION FILTER MODULE
     FILTER_MODULE_TITLE: '//h2[@class="Gallery__headline-1___2lHj5"]',
@@ -20,8 +23,9 @@ export default {
     FILTER_PRICE_RANGE: '//div[@class="Box__box___2XzJ2 Gallery__price-filter___30IUc"]',
 
     //DESTINATION CATALOG MODULE
-    CATALOG: '//div[@class="theme__cardMedia___3WTvG GalleryItem__cardMedia___2yVRm theme__wide___3c58S"]',
+    CATALOG: '//div[@class="Box__box___2XzJ2 Gallery__items-box___2hOZl"]',
     CATALOG_CTA: '(//button[contains(@class,"CTAButton__button___2nXRo")])[2]',
+    BOOK_CTA: '//button[contains(@class, "BookButton__accent___Y-Paf")]',
 
     //CHECKOUT MODULE
     FORM_TITLE: '//h2[@class="Checkout__headline-1___2KQaR"]',
@@ -35,8 +39,8 @@ export default {
     ORDER_SUMMARY_TITLE: '//h3[@class="OrderSummary__headline-2___2JUYV"]',
     DATE_ELEMENT: '//h3[@class="flexboxgrid__col-xs-7___3o2m-"]',
     DATE_VALUE: '(//div[@class="flexboxgrid__col-xs-5___1HkK5"])[1]',
-    TRAVELER_ELEMENT: '//div[@class="flexboxgrid__col-xs-7___3o2m-"]',
-    TRAVELER_VALUE: '(//div[@class="flexboxgrid__col-xs-5___1HkK5"])[2]',
+    TRAVELER_COUNT: '//div[@class="flexboxgrid__col-xs-7___3o2m-"]',
+    DESTINATION_PRICE: '(//div[@class="flexboxgrid__col-xs-5___1HkK5"])[2]',
     PROMO_CODE_INPUT: '(//input[@class="theme__inputElement___27dyY"])[5]',
     PROMO_CODE_CTA: '(//button[contains(@class,"CTAButton__button___2nXRo")])[3]',
     TERMS_CHECKBOX: '//label[@class="theme__field___14tiU"]',

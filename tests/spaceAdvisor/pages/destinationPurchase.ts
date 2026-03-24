@@ -13,8 +13,8 @@ class CheckoutModule {
     readonly orderSummaryTitle: Locator;
     readonly dateElement: Locator;
     readonly dateValue: Locator;
-    readonly travelerElement: Locator;
-    readonly travelerValue: Locator;
+    readonly travelerCount: Locator;
+    readonly destinationPrice: Locator;
     readonly promoCodeInput: Locator;
     readonly promoCodeCTA: Locator;
     readonly termsCheckbox: Locator;
@@ -39,8 +39,8 @@ class CheckoutModule {
         this.orderSummaryTitle = page.locator(locators.ORDER_SUMMARY_TITLE);
         this.dateElement = page.locator(locators.DATE_ELEMENT);
         this.dateValue = page.locator(locators.DATE_VALUE);
-        this.travelerElement = page.locator(locators.TRAVELER_ELEMENT);
-        this.travelerValue = page.locator(locators.TRAVELER_VALUE);
+        this.travelerCount = page.locator(locators.TRAVELER_COUNT);
+        this.destinationPrice = page.locator(locators.DESTINATION_PRICE);
         this.promoCodeInput = page.locator(locators.PROMO_CODE_INPUT);
         this.promoCodeCTA = page.locator(locators.PROMO_CODE_CTA);
         this.termsCheckbox = page.locator(locators.TERMS_CHECKBOX);
@@ -77,14 +77,14 @@ async confirmCheckoutFormUI(){
     expect(this.formFileUpload).toBeVisible
     expect(this.formFileUpload).toBeEnabled
     expect(this.formFileUpload).toHaveText('Drag and drop your health insurance or click to upload')
-}
+ }
 
 async completeCheckoutForm(){
     this.formNameInput.fill(testData.sa_traveler_name)
     this.formEmailInput.fill(testData.sa_traveler_email)
     this.formSSNInput.fill(testData.sa_traveler_ssn)
     this.formPhoneInput.fill(testData.sa_traveler_tel)
-}
+ }
 
 async confirmOrderSummaryUI(){
     expect(this.orderSummaryTitle).toBeVisible
@@ -93,9 +93,11 @@ async confirmOrderSummaryUI(){
     expect(this.dateValue).toBeVisible
     expect(this.dateValue).not.toHaveText('01/01/1970')
     //
-    expect(this.travelerElement).toBeVisible
-    expect(this.travelerValue).toBeVisible
-    expect(this.travelerValue).not.toHaveText('$0')
+    expect(this.travelerCount).toBeVisible
+    expect(this.travelerCount).not.toHaveText('0')
+    //
+    expect(this.destinationPrice).toBeVisible
+    expect(this.destinationPrice).not.toHaveText('$0')
     //
     expect(this.promoCodeInput).toBeVisible
     expect(this.promoCodeInput).toBeEmpty
@@ -107,11 +109,31 @@ async confirmOrderSummaryUI(){
     //
     expect(this.termsCheckbox).not.toBeChecked
     //
+    expect(this.totalValue).toBeVisible
+    expect(this.totalValue).not.toHaveText('$0')
+    //
     expect(this.submitCTA).toBeVisible
     expect(this.submitCTA).toBeDisabled
+ }
+
+async confirmTotal(){
+    /* 
+     * THIS IS AN EXPLICIT CHECK WHEN USING MULTIPLE TRAVELERS (2 Adults, 2 Children)
+     * Price of the selected destination is $192.64
+     * Quantity of travelers selected is 4
+    */
+    
+    const expectedTotal: number = 192.64 * 4;
+    const strInt: string = await this.totalValue.innerText();
+    const actualTotal: number = parseFloat(strInt);
+
+    expect(actualTotal).toBeCloseTo(expectedTotal);
 }
 
 async enterPromoCode(){
+    let originalPrice = await this.destinationPrice.innerText;
+    let newPrice = await this.totalValue.innerText;
+
     //BEFORE ENTERING A VALUE
     expect(this.promoCodeInput).toBeEmpty
     expect(this.promoCodeCTA).toBeDisabled
@@ -121,16 +143,17 @@ async enterPromoCode(){
     //AFTER ENTERING A VALUE
     expect(this.promoCodeCTA).toBeEnabled
     this.promoCodeCTA.click()
-}
+    expect(newPrice).not.toEqual(originalPrice)
+ }
 
 async agreeToTerms(){
     this.termsCheckbox.check
-}
+ }
 
 async placeOrder(){
     expect(this.submitCTA).toBeEnabled
     this.submitCTA.click()
-}
+ }
 
 }
 
