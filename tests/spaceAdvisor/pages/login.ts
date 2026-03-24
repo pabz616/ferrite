@@ -22,3 +22,5 @@ class LoginModule {
         this.loginError2 = page.locator(locators.LOGIN_ERROR_2);
     }
 }
+
+export default LoginModule;

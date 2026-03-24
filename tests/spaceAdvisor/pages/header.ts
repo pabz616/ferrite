@@ -12,3 +12,5 @@ class HeaderModule {
         this.loginCTA = page.locator(locators.LOGIN_CTA);
     }
 }
+
+export default HeaderModule;
