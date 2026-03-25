@@ -17,7 +17,7 @@ let onCartPage: CartPage;
 let onCustomerInfoPage: CustomerInfoPage;
 
 test.beforeEach( async ({ page }) => {
-  await page.goto('https://www.saucedemo.com/');
+  await page.goto(userData.appUrl);
   onHomePage = new HomePage(page);
   onProductListPage = new ProductListPage(page);
   onProductDetailsPage = new ProductDetailsPage(page);

@@ -9,7 +9,7 @@ let onProductList: ProductListPage;
 let onProductDetails: ProductDetailsPage;
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('https://www.saucedemo.com/');
+  await page.goto(userData.appUrl);
   onHomePage = new HomePage(page);
   onProductList = new ProductListPage(page)
   onProductDetails = new ProductDetailsPage(page)
@@ -19,7 +19,7 @@ test.describe('Swag Labs - Product Details Page UI Check', () => {
     test('Product Details Page is to spec', async ({ page }) => {
       await onHomePage.submitLogin(userData.username, userData.password);
       await onProductList.clickAddToCart;
-      await onProductDetails.checkUI;
+      await onProductDetails.confirmProductDetailsAreToSpec;
     })
 
     test ('Product Details Price Check', async({page}) => {
@@ -32,6 +32,6 @@ test.describe('Swag Labs - Product Details Page UI Check', () => {
     test('Product Details Page Add To Cart Button Is Actionable', async({ page }) => {
       await onHomePage.submitLogin(userData.username, userData.password);
       await onProductList.clickAddToCart;
-      await onProductDetails.checkUI;
+      await onProductDetails.confirmProductDetailsAreToSpec;
     });
 });

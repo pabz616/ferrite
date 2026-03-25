@@ -6,12 +6,12 @@ import userData from '../data/userData';
 let onHomePage: HomePage;
 let onProductList: ProductListPage;
 test.beforeEach(async ({ page }) => {
-  await page.goto('https://www.saucedemo.com/');
+  await page.goto(userData.appUrl);
   onHomePage = new HomePage(page);
   onProductList = new ProductListPage(page)
 });
 test.describe('Swag Labs - Product List Page UI Check', () => {
-    test('Product List Page Add To Cart Button Is Actionable', async ({ page }) => {
+  test('Product List Page Add To Cart Button Is Actionable', async ({ page }) => {
         await onHomePage.submitLogin(userData.username, userData.password);
         await onProductList.confirmAddToCartButtonIsClickable;
   })
