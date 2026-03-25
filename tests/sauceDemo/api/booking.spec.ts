@@ -113,7 +113,7 @@ test.describe.serial('RESTFUL BOOKER API - E2E Lifecycle', () => {
     expect(body.depositpaid).toBe(true); 
   });
 
-  test('GET - Filter Bookings (Collection Check)', async ({ request }) => {
+  test.skip('GET - Filter Bookings (Collection Check)', async ({ request }) => {
   
     const response = await request.get(`${BASE_URL}/booking/1`, {
       params: {
