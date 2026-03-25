@@ -129,19 +129,19 @@ class RegistrationForm {
     await expect(this.requiredConfirmPassword_error).toBeVisible();
 
     await expect(this.requiredPhoneNumber_errorMsg).toHaveText(
-      "This field is required",
+      "This field is required.",
     );
     await expect(this.requiredUsername_errorMsg).toHaveText(
-      "This field is required",
+      "This field is required.",
     );
     await expect(this.requiredEmail_errorMsg).toHaveText(
-      "This field is required",
+      "This field is required.",
     );
     await expect(this.requiredPassword_errorMsg).toHaveText(
-      "This field is required",
+      "This field is required.",
     );
     await expect(this.requiredConfirmPassword_errorMsg).toHaveText(
-      "This field is required",
+      "This field is required.",
     );
   }
 

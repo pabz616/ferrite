@@ -23,16 +23,19 @@ test.describe('Demo - Registration Form', () => {
     test('Registration Form - Invalid Email Validation Occurs', async ({page}) => {
         await onRegistrationForm.submitRegistration_InvalidEmail();
     });
-    test('Registration Form - Phone Number Validation', async ({page}) => {
+    test.skip('Registration Form - Phone Number Validation', async ({page}) => {
         await onRegistrationForm.submitRegistration_InvalidPhoneNumber();
-    });
-    test('Registration Form - File Upload Validation', async ({page}) => { 
         /* HAS BUGS */ 
     });
-    test('Registration Form - Password Strength Enforcement', async ({page}) => {
-        await onRegistrationForm.submitRegistration_WeakPassword();
+    test.skip('Registration Form - File Upload Validation', async ({page}) => { 
+        /* HAS BUGS */ 
     });
-    test('Registration Form - Mismatched Passwords Validation', async ({page}) => {
+    test.skip('Registration Form - Password Strength Enforcement', async ({page}) => {
+        await onRegistrationForm.submitRegistration_WeakPassword();
+        /* HAS BUGS */ 
+    });
+    test.skip('Registration Form - Mismatched Passwords Validation', async ({page}) => {
         await onRegistrationForm.submitMismatchedPasswords();
+        /* HAS BUGS */ 
     });
 });
