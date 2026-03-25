@@ -1,5 +1,7 @@
 import { type Page, type Locator , expect } from '@playwright/test';
 
+
+
 class CustomerInfoPage {
     readonly page: Page;
     readonly pageTitle: Locator;
@@ -18,8 +20,8 @@ class CustomerInfoPage {
     constructor(page: Page) {
         this.page = page;
         this.pageTitle = page.locator('//span[@class="title"]');
-        this.fname_input = page.locator('//input[@id="first-name"]'); //page.getByTestId('firstName');
-        this.lname_input = page.locator('//input[@id="last-name"]');
+        this.fname_input = page.getByPlaceholder('First Name');
+        this.lname_input = page.getByPlaceholder('Last Name');
         this.zipcode_input = page.getByPlaceholder('Zip/Postal Code');;
         this.cancel_button = page.getByRole('button', { name: 'cancel' });
         this.continue_button = page.getByRole('button', { name: 'continue' });
@@ -33,8 +35,8 @@ class CustomerInfoPage {
 
     /**
      * Fills the form fields with the provided user details.
-     * @param fname The first name string.
-     * @param lname The last name string.
+     * @param first The first name string.
+     * @param last The last name string.
      * @param zip The zip code string.
      */
 
@@ -61,7 +63,7 @@ async checkUI(){
 
     await expect(this.continue_button).toBeVisible;
     await expect(this.continue_button).toBeEnabled;
-  }
+}
 
 async confirmValidationForRequiredFields(){
     await expect(this.requiredFirstName).toBeVisible;
@@ -87,9 +89,9 @@ async confirmValidationErrorsAreCleared(){
 
 }
 
-async fillForm(fname: string, lname: string, zip: string){
-    await this.fname_input.fill(fname)
-    await this.lname_input.fill(lname)
+async fillForm(first: string, last: string, zip: string){
+    await this.fname_input.fill(first)
+    await this.lname_input.fill(last)
     await this.zipcode_input.fill(zip)
 }
 

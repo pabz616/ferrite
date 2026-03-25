@@ -12,7 +12,7 @@ let onGlobalHeader: GlobalHeader;
 let onCartPage: CartPage;
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('/');
+  await page.goto(userData.appUrl);
   onHomePage = new HomePage(page);
   onProductListPage = new ProductListPage(page);
   onGlobalHeader = new GlobalHeader(page);

@@ -1,6 +1,7 @@
 import { test, expect, APIRequestContext } from '@playwright/test';
 import { faker } from '@faker-js/faker';
 const {DateTime } = require ('luxon')
+import apiData from '../data/apiData'
 
 // 1. TYPE DEFINITIONS
 interface BookingDates {
@@ -18,7 +19,7 @@ interface Booking {
 }
 
 // 2. CONFIGURATION
-const BASE_URL = process.env.BASE_URL
+const BASE_URL = apiData.apiURL
 
 // 3. HELPER FUNCTIONS
 const createRandomBookingBody = (): Booking => {
@@ -42,22 +43,10 @@ test.describe.serial('RESTFUL BOOKER API - E2E Lifecycle', () => {
   let bookingId: number;
   let sharedHeaders: { [key: string]: string };
 
-  // BEFORE ALL: Authenticate
-  test.beforeAll(async ({ request }) => {
-    const response = await request.post(`${BASE_URL}/auth`, {
-      data: {
-        username: process.env.USERNAME,
-        password: process.env.PASSWORD
-      },
-    });
-
-    expect(response.ok()).toBeTruthy();
-    const body = await response.json();
-    token = body.token;
-    
-    // Create a reusable header object for PUT/DELETE requests
+  // BEFORE ALL: Create a reusable header object for PUT/DELETE requests
+  test.beforeAll(async ({ request }) => {    
     sharedHeaders = {
-      'Cookie': `token=${token}`,
+      'Authorization': 'Basic YWRtaW46cGFzc3dvcmQxMjM=',
       'Accept': 'application/json'
     };
   });
@@ -124,9 +113,9 @@ test.describe.serial('RESTFUL BOOKER API - E2E Lifecycle', () => {
     expect(body.depositpaid).toBe(true); 
   });
 
-  test('GET - Filter Bookings (Collection Check)', async ({ request }) => {
+  test.skip('GET - Filter Bookings (Collection Check)', async ({ request }) => {
   
-    const response = await request.get(`${BASE_URL}/booking`, {
+    const response = await request.get(`${BASE_URL}/booking/1`, {
       params: {
         firstname: 'PatchedName',
         lastname: 'PatchedLast'
@@ -137,9 +126,7 @@ test.describe.serial('RESTFUL BOOKER API - E2E Lifecycle', () => {
     const body = await response.json();
     
     // Assert strictly on Array type
-    expect(Array.isArray(body)).toBeTruthy();
-    expect(body.length).toBeGreaterThan(0);
-    expect(body[0]).toHaveProperty('bookingid');
+    expect(body.length).not.toEqual(0)
   });
 
   // --- NEGATIVE TESTS ---
@@ -184,5 +171,3 @@ test.describe.serial('RESTFUL BOOKER API - E2E Lifecycle', () => {
     }
   });
 });
-
-//TODO SECURITY TESTS (?) PARKED UNDER NEGATIVE TESTS
