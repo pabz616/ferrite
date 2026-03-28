@@ -1,18 +1,18 @@
 export default {
     //HEADER MODULE
-    HEADER_TITLE: '//h1[@class="TopBar__logo___3-82j"]',
+    HEADER_TITLE: '//h1[contains(@class,"TopBar__logo___3-82j")]',
     LOGIN_CTA: '//button[@class="NavButton__nav-button___34wHC"]',
     
     //DESTINATION SELECTION MODULE
     DEST_MODULE_TITLE: '//h1[@class="Hero__headline-1___3C6vA"]',
     DEST_MODULE_BYLINE: '//h2[@class="Hero__headline-2___1awT4"]',
-    DEPARTURE_PICKER: '(//input[@class="theme__inputElement___27dyY theme__inputElement___1oBGc WhiteDatePicker__inputElement___3d9uL"])[1]',
-    RETURN_PICKER: '(//input[@class="theme__inputElement___27dyY theme__inputElement___1oBGc WhiteDatePicker__inputElement___3d9uL"])[2]',
+    DEPARTURE_PICKER: '(//input[contains(@class,"WhiteDatePicker__inputElement___3d9uL")])[1]',
+    RETURN_PICKER: '(//input[contains(@class,"WhiteDatePicker__inputElement___3d9uL")])[2]',
     PASSENGER_ADULT_PICKER: '(//input[contains(@class,"WhiteDropDown__inputInputElement___2wTPU")])[1]',
     ADULTS_2: '//li[contains(@class,"WhiteDropDown__selected___3y0b0")][1]',
     PASSENGER_CHILD_PICKER: '(//input[contains(@class,"WhiteDropDown__inputInputElement___2wTPU")])[2]',
     CHILDREN_2: '(//li[contains(@class,"WhiteDropDown__selected___3y0b0")])[2]',
-    SELECT_CTA: '(//button[contains(@class,"CTAButton__button___2nXRo")])[1]',
+    SELECT_CTA: '//button[contains(@class,"Hero__cta-button___9VskW")]',
     PICKER_CTA: '(//button[contains(@class,"theme__button___3HGWm theme__button___14VKJ")])[2]',
 
     //DESTINATION FILTER MODULE

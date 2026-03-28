@@ -36,7 +36,7 @@ class DestinationFilters {
         this.filterPriceRange = page.locator(locators.FILTER_PRICE_RANGE);
     }
 
-    async confirmDestinationFilterUI(){
+    async verifyDestinationFilterUI(){
         await expect(this.filterPlanetName).toBeVisible();
         await expect(this.filterPlanetColor).toBeVisible();
         await expect(this.filterPriceRange).toBeVisible();
