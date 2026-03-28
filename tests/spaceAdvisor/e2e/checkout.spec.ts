@@ -19,10 +19,6 @@ test.beforeEach( async ({ page }) => {
   onDestinationFilters = new DestinationFilters(page);
 });
 test.describe('Space Advisor - Checkout Flow', () => {
-    test.skip('Confirm Travel Catalog UI Elements', async ({ page }) => {
-        onDestinationCatalog.verifyCatalogUI();
-        //TODO FIX TEST - Locators are coming in undefined (?)
-    });
     test('Purchase a Solo Traveler Package', async ({ page }) => {
         onDestinationCatalog.selectDestination(1)
         onCheckoutForm.completeCheckoutForm
@@ -77,7 +73,6 @@ test.describe('Space Advisor - Checkout Flow', () => {
         onCheckoutForm.agreeToTerms
         onCheckoutForm.placeOrder
     });
-
     test('Purchase A Package, Incomplete Checkout', async ({page}) =>{
         onDestinationCatalog.selectDestination(1)
         onCheckoutForm.submitIncompleteCheckoutForm

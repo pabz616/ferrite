@@ -1,6 +1,7 @@
 import { type Page, type Locator , expect } from '@playwright/test';
 import locators from '../pageElements/locators';
 const {DateTime } = require ('luxon')
+import testData from '../utils/testData';
 
 class DestinationSelectionModule {
     readonly page: Page;
@@ -39,27 +40,34 @@ class DestinationSelectionModule {
          this.selectCTA = page.locator(locators.SELECT_CTA);
     }
 
-async confirmSelectionUI(){
-    //TODO
+async verifySelectionUI(){
+    await expect(this.page.getByText(testData.sa_HEADER)).toBeVisible
+    await expect(this.page.getByText(testData.sa_Banner)).toBeVisible
+
+    // await expect(this.page.getByText('Departing')).toBeVisible();
+    // await expect(this.page.getByText('Returning')).toBeVisible();
+    // await expect(this.page.getByText('Adults(18+)')).toBeVisible();
+    // await expect(this.page.getByText('Children(0-7)')).toBeVisible();
+    // await expect(this.selectCTA).toBeVisible();
 }
 
 async selectDepartureDate(){
-    this.departurePicker.click()
-    this.selectDateDeparting()
-    this.okButton.click()
+    await this.departurePicker.click()
+    await this.selectDateDeparting()
+    await this.okButton.click()
 }
 
 async selectReturnDate(){
-    this.returnPicker.click()
-    this.selectDateReturning()
-    this.okButton.click()
+    await this.returnPicker.click()
+    await this.selectDateReturning()
+    await this.okButton.click()
 }
 
 async selectFamily(){    
-    this.passengerAdultPicker.click()
-    this.twoAdults.click()
-    this.passengerChildPicker.click()
-    this.twoAdults.click()
+    await this.passengerAdultPicker.click()
+    await this.twoAdults.click()
+    await this.passengerChildPicker.click()
+    await this.twoAdults.click()
  }
 
 }

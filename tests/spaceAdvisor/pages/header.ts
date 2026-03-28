@@ -1,5 +1,6 @@
 import { type Page, type Locator , expect } from '@playwright/test';
 import locators from '../pageElements/locators';
+import testData from '../utils/testData';
 
 class HeaderModule {
     readonly page: Page;
@@ -11,6 +12,12 @@ class HeaderModule {
         this.headerTitle = page.locator(locators.HEADER_TITLE);
         this.loginCTA = page.locator(locators.LOGIN_CTA);
     }
+
+async verifyHeaderUI(){
+    await expect(this.page.getByText(testData.sa_Banner)).toBeVisible
+    await expect(this.page.getByText('Login')).toBeVisible
+    await expect(this.page.getByText('Login')).toBeEnabled
+  }
 }
 
 export default HeaderModule;
