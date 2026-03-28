@@ -4,18 +4,21 @@ import DestinationCatalog from '../pages/destinationCatalog';
 import DestinationSelectionModule from '../pages/destinationSelection';
 import DestinationFilters from '../pages/destinationFilter';
 import Header from '../pages/header'
+import Footer from '../pages/footer'
 
 let onDestinationCatalog: DestinationCatalog;
 let onDestinationSelection: DestinationSelectionModule
 let onDestinationFilters: DestinationFilters
 let onHeaderSection: Header
+let onFooterSection: Footer
 
 test.beforeEach( async ({ page }) => {
   await page.goto(testData.sa_URL);
   onDestinationCatalog = new DestinationCatalog(page);
   onDestinationSelection = new DestinationSelectionModule(page);
   onDestinationFilters = new DestinationFilters(page);
-  onHeaderSection = new Header(page)
+  onHeaderSection = new Header(page);
+  onFooterSection = new Footer(page);
 });
 
 test.describe('Space Advisor - Homepage', () => {
@@ -41,6 +44,18 @@ test.describe('Space Advisor - Homepage', () => {
         onDestinationCatalog.verifyCatalogUI();
     });
 
+    test.skip('Confirm Updated Selection', async({page}) =>{
+        onDestinationCatalog.updateSelection();
+        /**
+         * On homepage, click "book" for the Planet Madan
+         * At checkout, note the price and title on the graph
+         * Scroll up and click "book" on any other planet
+         * Expected result is to see the new price and planet selection on the price and graph title respectively
+         */
+    });
 
+    test.skip('Confirm Footer Module UI Elements on Homepage', async ({page}) => {
+        onFooterSection.verifyFooterUI();
+    })
 
 });

@@ -5,12 +5,15 @@ class DestinationCatalog {
     readonly page: Page;
     readonly catalog: Locator;
     readonly bookCTA: Locator;
+    readonly select_Madan: Locator;
     readonly loadMoreCTA: Locator;
 
     constructor(page: Page) {
         this.page = page;
         this.catalog = page.locator(locators.CATALOG);
         this.bookCTA = page.locator(locators.BOOK_CTA);
+        this.select_Madan = page.locator('xpath=(//button[contains(@class,"BookButton__accent___Y-Paf")])[1]')
+
         this.loadMoreCTA = page.locator(locators.CATALOG_CTA);
     }
 
@@ -49,5 +52,12 @@ async verifyCatalogUI() {
 async selectDestination(index: number) {
     await this.bookCTA.nth(index);
   }
+
+async updateSelection(){
+    const Madan_destination_price = this.getPrice(1)
+    
+    await this.select_Madan.click();
+    await expect(Madan_destination_price).toBe('$1,183.46')
+}
 }
 export default DestinationCatalog;
