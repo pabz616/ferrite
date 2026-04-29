@@ -2,6 +2,8 @@ export default {
     //HEADER MODULE
     HEADER_TITLE: '//h1[contains(@class,"TopBar__logo___3-82j")]',
     LOGIN_CTA: '//button[@class="NavButton__nav-button___34wHC"]',
+    LOGGED_IN_USER: '(//div[@class="mui-dropdown "]//span)[1]',
+    LOGOUT_CTA: '//ul[contains(@class,"mui-dropdown__menu")]//a[contains(.,"Log out")]',
     
     //DESTINATION SELECTION MODULE
     DEST_MODULE_TITLE: '//h1[@class="Hero__headline-1___3C6vA"]',
@@ -59,8 +61,9 @@ export default {
 
     //LOGIN MODULE
     LOGIN_FORM_TITLE: '//h2[@class="Login__headline-1___qo4Tz"]',
-    LOGIN_FORM_USERNAME_INPUT: '(//input[@class="theme__inputElement___27dyY"])[1]',
-    LOGIN_FORM_PASSWORD_INPUT: '(//input[@class="theme__inputElement___27dyY"])[2]',
+    LOGIN_FORM_BYLINE: '(//p)[8]',
+    LOGIN_FORM_USERNAME_INPUT: '(//input[@type="text"])[5]',
+    LOGIN_FORM_PASSWORD_INPUT: '//input[@type="password"]',
     LOGIN_FORM_SUBMIT_CTA: '//button[contains(@class,"LoginButton__primary___38GOe")]',
     LOGIN_FORM_CANCEL_CTA: '//button[contains(@class,"LoginButton__accent___hdTFW")]',
     LOGIN_ERROR_1: '(//span[@class="theme__error___3ilni"])[1]',

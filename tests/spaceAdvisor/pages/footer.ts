@@ -14,10 +14,10 @@ class FooterModule {
         this.topLink = page.locator(locators.TOP_LINK);
     }
 
-   async verifyFooterUI(){
-    expect(this.socialLinks).toBeVisible();
-    expect(this.credits).toBeVisible();
-    expect(this.topLink).toBeVisible();
+async verifyFooterUI(){
+    await expect(this.socialLinks).toBeVisible();
+    await expect(this.credits).toBeVisible();
+    await expect(this.topLink).toBeVisible();
    } 
 }
 
