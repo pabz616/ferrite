@@ -13,5 +13,11 @@ export default {
     sa_promo: faker.color+`${faker.number.int}`,
     EmailErrorCopy: 'Enter a valid e-mail address.',
     SSNErrorCopy: 'Enter a valid Social Security number (xxx-xx-xxxx).',
-    TELErrorCopy: 'Enter a valid US phone number.'
+    TELErrorCopy: 'Enter a valid US phone number.',
+    LoginTitleCopy: 'Login',
+    LoginBylineCopy: 'Welcome back! Let’s explore our awesome universe together :)',
+    
+    //AUTH CREDENTIALS
+    validUsername: 'tester123',
+    validPassword: 'password123'
 }

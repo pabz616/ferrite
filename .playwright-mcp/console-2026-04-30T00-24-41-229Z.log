@@ -1,0 +1,2 @@
+[     607ms] [WARNING] Mobx Injector: you are trying to attach `contextTypes` on an component decorated with `inject` (or `observer`) HOC. Please specify the contextTypes on the wrapped component instead. It is accessible through the `wrappedComponent` @ https://demo.testim.io/bundle.js:25
+[     657ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://demo.testim.io/login:0

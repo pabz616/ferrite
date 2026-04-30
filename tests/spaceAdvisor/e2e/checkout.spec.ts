@@ -20,63 +20,63 @@ test.beforeEach( async ({ page }) => {
 });
 test.describe('Space Advisor - Checkout Flow', () => {
     test('Purchase a Solo Traveler Package', async ({ page }) => {
-        onDestinationCatalog.selectDestination(1)
-        onCheckoutForm.completeCheckoutForm
-        onCheckoutForm.confirmOrderSummaryUI
-        onCheckoutForm.agreeToTerms
-        onCheckoutForm.placeOrder
+        await onDestinationCatalog.selectDestination(1)
+        await onCheckoutForm.completeCheckoutForm
+        await onCheckoutForm.confirmOrderSummaryUI
+        await onCheckoutForm.agreeToTerms
+        await onCheckoutForm.placeOrder
     });
     test('Purchase Trip w. Promo Code', async ({ page }) => {
-        onDestinationCatalog.selectDestination(2)
-        onCheckoutForm.completeCheckoutForm
-        onCheckoutForm.enterPromoCode
-        onCheckoutForm.confirmOrderSummaryUI
-        onCheckoutForm.agreeToTerms
-        onCheckoutForm.placeOrder
+        await onDestinationCatalog.selectDestination(2)
+        await onCheckoutForm.completeCheckoutForm
+        await onCheckoutForm.enterPromoCode
+        await onCheckoutForm.confirmOrderSummaryUI
+        await onCheckoutForm.agreeToTerms
+        await onCheckoutForm.placeOrder
     });
     test.skip('Purchase a family Package', async ({ page }) => {
     //TODO FIX TEST - Date script is borked!
         onDestinationSelection.selectDateDeparting()
-        onDestinationSelection.selectDateReturning
-        onDestinationSelection.selectFamily()
-        onDestinationCatalog.selectDestination(3)
-        onCheckoutForm.completeCheckoutForm
-        onCheckoutForm.confirmOrderSummaryUI
-        onCheckoutForm.confirmTotal
-        onCheckoutForm.agreeToTerms
-        onCheckoutForm.placeOrder
+        await onDestinationSelection.selectDateReturning
+        await onDestinationSelection.selectFamily()
+        await onDestinationCatalog.selectDestination(3)
+        await onCheckoutForm.completeCheckoutForm
+        await onCheckoutForm.confirmOrderSummaryUI
+        await onCheckoutForm.confirmTotal
+        await onCheckoutForm.agreeToTerms
+        await onCheckoutForm.placeOrder
     });
     test('Purchase a Package Based on Launch Criteria', async ({ page }) => {
-        onDestinationFilters.selectPlanetByName
-        onDestinationCatalog.selectDestination(1)
-        onCheckoutForm.completeCheckoutForm
-        onCheckoutForm.confirmOrderSummaryUI
-        onCheckoutForm.confirmTotal
-        onCheckoutForm.agreeToTerms
+        await onDestinationFilters.selectPlanetByName
+        await onDestinationCatalog.selectDestination(1)
+        await onCheckoutForm.completeCheckoutForm
+        await onCheckoutForm.confirmOrderSummaryUI
+        await onCheckoutForm.confirmTotal
+        await onCheckoutForm.agreeToTerms
         onCheckoutForm.placeOrder
     });
     test('Purchase a Package Based on Color Preferences', async ({ page }) => {
-        onDestinationFilters.selectPlanetByColor
-        onDestinationCatalog.selectDestination(1)
-        onCheckoutForm.completeCheckoutForm
-        onCheckoutForm.confirmOrderSummaryUI
-        onCheckoutForm.confirmTotal
-        onCheckoutForm.agreeToTerms
-        onCheckoutForm.placeOrder
+        await onDestinationFilters.selectPlanetByColor
+        await onDestinationCatalog.selectDestination(1)
+        await onCheckoutForm.completeCheckoutForm
+        await onCheckoutForm.confirmOrderSummaryUI
+        await onCheckoutForm.confirmTotal
+        await onCheckoutForm.agreeToTerms
+        await onCheckoutForm.placeOrder
     });
     test('Purchase a Package Based on Price', async ({ page }) => {
-        onDestinationFilters.selectPlanetByPrice
-        onDestinationCatalog.selectDestination(1)
-        onCheckoutForm.completeCheckoutForm
-        onCheckoutForm.confirmOrderSummaryUI
-        onCheckoutForm.confirmTotal
-        onCheckoutForm.agreeToTerms
-        onCheckoutForm.placeOrder
+        await onDestinationFilters.selectPlanetByPrice
+        await onDestinationCatalog.selectDestination(1)
+        await onCheckoutForm.completeCheckoutForm
+        await onCheckoutForm.confirmOrderSummaryUI
+        await onCheckoutForm.confirmTotal
+        await onCheckoutForm.agreeToTerms
+        await onCheckoutForm.placeOrder
     });
     test('Purchase A Package, Incomplete Checkout', async ({page}) =>{
-        onDestinationCatalog.selectDestination(1)
-        onCheckoutForm.submitIncompleteCheckoutForm
-        onCheckoutForm.confirmRequiredValidationErrorsAreShown
-        onCheckoutForm.confirmCheckoutIsBlocked
+        await onDestinationCatalog.selectDestination(1)
+        await onCheckoutForm.submitIncompleteCheckoutForm
+        await onCheckoutForm.confirmRequiredValidationErrorsAreShown
+        await onCheckoutForm.confirmCheckoutIsBlocked
     });
 });
