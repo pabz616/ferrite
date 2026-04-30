@@ -18,6 +18,6 @@ export default {
     LoginBylineCopy: 'Welcome back! Let’s explore our awesome universe together :)',
     
     //AUTH CREDENTIALS
-    validUsername: 'testuser',
-    validPassword: 'Test@1234'
+    validUsername: 'tester123',
+    validPassword: 'password123'
 }

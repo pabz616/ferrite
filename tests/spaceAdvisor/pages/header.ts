@@ -28,7 +28,7 @@ async clickLoginCTA(){
   }
 
 async confirmUserIsAuthenticated(){
-    await expect(this.page.getByText(testData.sa_Banner)).toHaveText('HELLO, JOHN')
+    await expect(this.page.getByText('HELLO, JOHN')).toBeVisible();
     await expect(this.loggedInUser).toBeVisible();
 }
 

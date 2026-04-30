@@ -13,9 +13,11 @@ test.beforeEach(async ({ page }) => {
   onLoginSection = new Login(page);
 });
 
-// test.afterEach(async ({ page }) => {
-//   await onHeaderSection.clickLogOutCTA();
-// });
+test.afterEach(async ({ page }) => {
+  if (await onHeaderSection.loggedInUser.isVisible()) {
+    await onHeaderSection.clickLogOutCTA();
+  }
+});
 
 test.describe("Space Advisor - Login", () => {
   test("Confirm Login Form UI Elements", async ({ page }) => {
@@ -24,9 +26,17 @@ test.describe("Space Advisor - Login", () => {
     await onLoginSection.verifyLoginUI();
   });
 
-  test.skip("Submit Login Form with valid credentials", async ({ page }) => {
-    //TODO - FIX - This test is currently failing due locators not being able to find the username and password input fields. This is being investigated.
+  test("Submit Login Form with valid credentials", async ({ page }) => {
+    await onHeaderSection.clickLoginCTA();
     await onLoginSection.submit_login(testData.validUsername, testData.validPassword);
     await onHeaderSection.confirmUserIsAuthenticated();
    });
+
+  test("Submit Login Form with no credentials", async ({ page }) => {
+    await onHeaderSection.clickLoginCTA();
+    await onLoginSection.submit_login("", "");
+    await onLoginSection.confirmRequiredFieldErrors();
+   });
+
+
 });

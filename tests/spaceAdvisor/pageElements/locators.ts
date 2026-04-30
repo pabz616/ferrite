@@ -62,8 +62,8 @@ export default {
     //LOGIN MODULE
     LOGIN_FORM_TITLE: '//h2[@class="Login__headline-1___qo4Tz"]',
     LOGIN_FORM_BYLINE: '(//p)[8]',
-    LOGIN_FORM_USERNAME_INPUT: '(//input[@type="text"])[5]',
-    LOGIN_FORM_PASSWORD_INPUT: '//input[@type="password"]',
+    // LOGIN_FORM_USERNAME_INPUT: '(//input[@type="text"])[5]',
+    // LOGIN_FORM_PASSWORD_INPUT: '//input[@type="password"]',
     LOGIN_FORM_SUBMIT_CTA: '//button[contains(@class,"LoginButton__primary___38GOe")]',
     LOGIN_FORM_CANCEL_CTA: '//button[contains(@class,"LoginButton__accent___hdTFW")]',
     LOGIN_ERROR_1: '(//span[@class="theme__error___3ilni"])[1]',

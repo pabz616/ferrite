@@ -1,0 +1,99 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - heading "Space Advisor" [level=1] [ref=e7]
+      - list [ref=e9]:
+        - listitem [ref=e10]:
+          - button "Log in" [ref=e11] [cursor=pointer]
+  - generic [ref=e12]:
+    - heading "Space & Beyond" [level=1] [ref=e14]
+    - heading "Customize your dream journey to space" [level=2] [ref=e16]
+    - generic [ref=e18]:
+      - generic [ref=e19]:
+        - img [ref=e20]
+        - generic [ref=e24]:
+          - textbox [ref=e25] [cursor=pointer]
+          - generic: Departing
+      - generic [ref=e26]:
+        - img [ref=e27]
+        - generic [ref=e31]:
+          - textbox [ref=e32] [cursor=pointer]
+          - generic: Returning
+      - textbox [ref=e35] [cursor=pointer]: Adults (18+)
+      - textbox [ref=e38] [cursor=pointer]: Children (0-7)
+    - button "Select Destination" [ref=e40] [cursor=pointer]
+  - generic [ref=e41]:
+    - heading "Your next destination" [level=2] [ref=e43]
+    - heading "1 traveler" [level=3] [ref=e46]
+    - generic [ref=e49]:
+      - textbox [ref=e52] [cursor=pointer]: Launch
+      - textbox [ref=e55] [cursor=pointer]: Planet color
+      - generic [ref=e56]:
+        - textbox [ref=e58]: $100
+        - generic [ref=e66]:
+          - text: $
+          - textbox [ref=e67]: "1800"
+    - generic [ref=e70]:
+      - generic [ref=e71]:
+        - heading "Madan" [level=5] [ref=e76]
+        - paragraph [ref=e78]: Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.
+        - generic [ref=e79]:
+          - generic [ref=e80]: $1183.46
+          - button "Book" [ref=e81] [cursor=pointer]
+      - generic [ref=e82]:
+        - heading "Shenji" [level=5] [ref=e87]
+        - paragraph [ref=e89]: Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis.
+        - generic [ref=e90]:
+          - generic [ref=e91]: $1089.07
+          - button "Book" [ref=e92] [cursor=pointer]
+      - generic [ref=e93]:
+        - heading "Tongli" [level=5] [ref=e98]
+        - paragraph [ref=e100]: Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.
+        - generic [ref=e101]:
+          - generic [ref=e102]: $192.64
+          - button "Book" [ref=e103] [cursor=pointer]
+      - generic [ref=e104]:
+        - heading "Flagstaff" [level=5] [ref=e109]
+        - paragraph [ref=e111]: Sed ante. Vivamus tortor. Duis mattis egestas metus.
+        - generic [ref=e112]:
+          - generic [ref=e113]: $346.68
+          - button "Book" [ref=e114] [cursor=pointer]
+      - generic [ref=e115]:
+        - heading "Sant Cugat Del Valles" [level=5] [ref=e120]
+        - paragraph [ref=e122]: Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.
+        - generic [ref=e123]:
+          - generic [ref=e124]: $1243.73
+          - button "Book" [ref=e125] [cursor=pointer]
+      - generic [ref=e126]:
+        - heading "Shaheying" [level=5] [ref=e131]
+        - paragraph [ref=e133]: Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.
+        - generic [ref=e134]:
+          - generic [ref=e135]: $215.38
+          - button "Book" [ref=e136] [cursor=pointer]
+    - button "Load more" [ref=e138] [cursor=pointer]
+  - contentinfo [ref=e139]:
+    - generic [ref=e142]:
+      - img [ref=e143]
+      - img [ref=e146]
+      - img [ref=e152]
+    - generic [ref=e158]:
+      - paragraph [ref=e160]:
+        - text: "Satellite imagery: © 2014 Astrium, DigitalGlobe"
+        - text: Some features and devices may not be available in all areas
+      - generic [ref=e162] [cursor=pointer]:
+        - text: Back to top
+        - img [ref=e163]
+  - generic [ref=e170]:
+    - heading "Login" [level=2] [ref=e171]
+    - paragraph [ref=e172]: Welcome back! Let’s explore our awesome universe together :)
+    - generic [ref=e173]:
+      - generic [ref=e174]:
+        - textbox [active] [ref=e175]
+        - generic: Username
+      - generic [ref=e176]:
+        - textbox [ref=e177]
+        - generic: Password
+      - button "Submit" [ref=e178]
+    - navigation [ref=e179]:
+      - button "Cancel" [ref=e180] [cursor=pointer]
+      - button "Log in" [ref=e181] [cursor=pointer]
